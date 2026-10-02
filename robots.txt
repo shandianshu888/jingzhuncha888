@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 不收录内部设计预览页
+Disallow: /logo-options.html
+
+Sitemap: https://jcjingzhuncha.com/sitemap.xml

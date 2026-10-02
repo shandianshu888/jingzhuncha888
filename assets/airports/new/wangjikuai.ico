@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网际快车 · 安全上网</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            min-height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(145deg, #f0f3ff 0%, #f3f6f9 60%, #e8f4ff 100%);
+            color: #464e5f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* ── 卡片容器 ── */
+        .container {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(105, 147, 255, 0.12), 0 2px 12px rgba(0,0,0,0.06);
+            padding: 48px 40px 40px;
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        /* ── Logo ── */
+        .logo-wrap {
+            margin-bottom: 20px;
+        }
+
+        .logo-wrap img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+        /* ── 品牌名 ── */
+        .brand-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1b1f3b;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .brand-slogan {
+            font-size: 13px;
+            color: #8a93a8;
+            margin-bottom: 28px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── 提示信息 ── */
+        .notice-box {
+            background: #f5f7ff;
+            border: 1px solid #e3eaff;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .notice-box .notice-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6993ff;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+        }
+
+        .notice-box p {
+            font-size: 13.5px;
+            color: #5a637a;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ── 选择入口标签 ── */
+        .section-label {
+            font-size: 12px;
+            color: #aab0c0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        /* ── 按钮组 ── */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .button .btn-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .button .btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .button .btn-label {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .button .btn-sub {
+            font-size: 11px;
+            font-weight: 400;
+            opacity: 0.82;
+            margin-top: 1px;
+        }
+
+        /* 国外 - 主色蓝 */
+        .button.guowai {
+            background: linear-gradient(135deg, #6993ff 0%, #5278f5 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 18px rgba(105, 147, 255, 0.38);
+        }
+
+        .button.guowai:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(105, 147, 255, 0.48);
+        }
+
+        .button.guowai:active {
+            transform: translateY(0);
+            opacity: 0.92;
+        }
+
+        /* 国内 - 青绿 */
+        .button.guonei {
+            background: linear-gradient(135deg, #1bc5bd 0%, #0eafa7 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 18px rgba(27, 197, 189, 0.35);
+        }
+
+        .button.guonei:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(27, 197, 189, 0.45);
+        }
+
+        .button.guonei:active {
+            transform: translateY(0);
+            opacity: 0.92;
+        }
+
+        /* ── 底部提示 ── */
+        .footer-tip {
+            margin-top: 20px;
+        }
+
+        .bookmark-tip {
+            display: inline-block;
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border: 1px solid #ffd54f;
+            color: #b45309;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── 弹框 ── */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(27, 31, 59, 0.55);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 32px 28px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+            max-width: 360px;
+            width: 100%;
+        }
+
+        .modal-content h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1b1f3b;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            font-size: 13.5px;
+            color: #5a637a;
+            line-height: 1.65;
+            margin-bottom: 6px;
+        }
+
+        .modal-content a {
+            color: #6993ff;
+            word-break: break-all;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .modal-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-buttons button {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.15s;
+        }
+
+        .modal-buttons button:active {
+            opacity: 0.8;
+        }
+
+        .close-btn {
+            background-color: #f0f3f9;
+            color: #6b7280;
+        }
+
+        .jump-btn {
+            background: linear-gradient(135deg, #6993ff, #5278f5);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(105, 147, 255, 0.35);
+        }
+
+        /* ── Loading ── */
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(27, 31, 59, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .loading-spinner {
+            width: 44px;
+            height: 44px;
+            border: 4px solid rgba(255, 255, 255, 0.25);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.85s linear infinite;
+        }
+
+        .loading-text {
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ── 移动端适配 ── */
+        @media (max-width: 480px) {
+            .container {
+                padding: 36px 24px 32px;
+                border-radius: 16px;
+            }
+
+            .brand-name {
+                font-size: 22px;
+            }
+
+            .button {
+                padding: 15px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Logo -->
+        <div class="logo-wrap">
+            <img src="logo.png" alt="网际快车">
+        </div>
+
+        <!-- 品牌 -->
+        <div class="brand-name">网际快车</div>
+        <div class="brand-slogan">稳定 · 安全 · 高速 — 防失联专属入口</div>
+
+        <!-- 提示 -->
+        <div class="notice-box">
+            <div class="notice-title">📌 使用提示</div>
+            <p>请根据您当前所在地区选择访问入口，确保访问顺畅。遇到问题可在官网「工单反馈」提交，24 小时一对一支持。</p>
+        </div>
+
+        <!-- 按钮 -->
+        <div class="section-label">选择您的访问方式</div>
+        <div class="button-group">
+            <button class="button guowai" onclick="guowaiGoContent()">
+                <span class="btn-icon">🌍</span>
+                <span class="btn-text">
+                    <span class="btn-label">国际网络访问</span>
+                    <span class="btn-sub">海外及港澳台网络用户</span>
+                </span>
+            </button>
+            <button class="button guonei" onclick="guoneiGoContent()">
+                <span class="btn-icon">🇨🇳</span>
+                <span class="btn-text">
+                    <span class="btn-label">国内网络访问</span>
+                    <span class="btn-sub">中国大陆直连网络用户</span>
+                </span>
+            </button>
+        </div>
+
+        <div class="footer-tip">
+            <span class="bookmark-tip">⭐ 防失联 · 请收藏本页地址</span>
+        </div>
+    </div>
+
+    <!-- 域名变更通知弹框 -->
+    <div id="domainModal" class="modal">
+        <div class="modal-content">
+            <h3>🔔 更换域名通知</h3>
+            <p>防失联，请牢记当前落地页地址</p>
+            <p><a id="new-domain-link" href="#" target="_blank">获取中...</a></p>
+            <p>点击跳转后直接使用</p>
+            <div class="modal-buttons">
+                <button class="close-btn" onclick="closeModal()">关闭</button>
+                <button class="jump-btn" onclick="jumpToPrefer()">立即跳转</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading 遮罩 -->
+    <div id="loading">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">正在连接，请稍候…</div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    // 渠道码来源: 优先 ?c= 参数; 缺失时从子域名最左段反推 (渠道号.域名, 兼容三级/四级)。
+    // 渠道号为 6 位纯字母; 浏览器会把域名小写化, 故 toUpperCase 还原成后端大写渠道码, 避免返现匹配不上。
+    function channelCodeFromHostname(hostname) {
+        const sub = (hostname || "").split(".")[0];
+        const reserved = ["www","api","app","m","mail","ftp","cdn","static","assets","admin"];
+        if (/^[a-z]{6}$/i.test(sub) && reserved.indexOf(sub.toLowerCase()) === -1) {
+            return sub.toUpperCase();
+        }
+        return null;
+    }
+    const c = urlParams.get('c') || channelCodeFromHostname(window.location.hostname);
+    console.log("c=" + c);
+    if(c){
+        localStorage.setItem("c", c);
+    }
+
+    const token = urlParams.get('token');
+    if(token){
+        localStorage.setItem("token", token);
+        // 从URL中移除token参数
+        urlParams.delete('token');
+        const newSearch = urlParams.toString();
+        window.history.replaceState({}, '', window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash);
+    }
+
+    function addUrlParam(url, key, value) {
+        let newUrl = new URL(url, window.location.origin); // 处理相对URL
+        newUrl.searchParams.set(key, value); // 添加或更新参数
+        return newUrl.toString();
+    }
+
+
+     // 显示 Loading
+     function showLoading() {
+        document.getElementById("loading").style.display = "flex";
+    }
+
+    // 隐藏 Loading
+    function hideLoading() {
+        document.getElementById("loading").style.display = "none";
+    }
+
+    function getHostWithPort() {
+        let protocol = window.location.protocol; // 获取协议（http: 或 https:）
+        let host = window.location.hostname; // 获取域名
+        let port = window.location.port;     // 获取端口号
+
+        // 如果有端口号，则拼接端口，否则只返回域名
+        const res = port ? `${protocol}//${host}:${port}` : `${protocol}//${host}`;
+        console.log("current " + res);
+        return res;
+    }
+
+    async function Pinger_ping(url) {
+        return new Promise((resolve, reject) => {
+            const _that = this;
+            const img = new Image();
+
+            img.onload = function() {
+                resolve(true); // Ping 成功，返回成功结果
+            };
+
+            img.onerror = function() {
+                resolve(false); // Ping 失败，返回失败结果
+            };
+
+            img.src = url;
+
+            this.timer = setTimeout(() => {
+                resolve(false); // 超时，返回失败结果
+            }, 1500);
+        });
+    }
+
+
+    async function checkServer(contentUrl1, contentUrl2) {
+        const endpoint = "/check.png"
+        const contentUrls = [contentUrl1, contentUrl2]
+
+        for (const contentUrl of contentUrls) {
+            try {
+                const url = `${contentUrl}${endpoint}`;
+                const canConnect = await Pinger_ping(url);
+                if(canConnect){
+                    console.log(`成功访问: ${url}`);
+                    return contentUrl; // 返回第一个可用的 URL
+                }else{
+                    console.log(`失败: ${url}`);
+                }
+            } catch (error) {
+                console.log(`无法访问: ${contentUrl}`);
+            }
+        }
+
+        return contentUrl1; // 两个 IP 都不可用
+    }
+
+    function closeModal() {
+        document.getElementById("domainModal").style.display = "none";
+    }
+
+
+    let guoneiContentUrl = null;
+    let guowaiContentUrl = null;
+    let preferHost = null;
+
+    function openModal() {
+        const newDomainLink = document.getElementById("new-domain-link");
+        if(preferHost){
+            var toJumpUrl = preferHost;
+            newDomainLink.textContent = toJumpUrl;
+            newDomainLink.href = toJumpUrl;
+        }
+
+
+        document.getElementById("domainModal").style.display = "flex";
+    }
+
+    function encodeBase64(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function decodeBase64(b64) {
+        const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+    }
+
+    function isBot() {
+        const botPatterns = ["bot", "crawl", "spider", "slurp", "archiver", "bingpreview", "duckduckbot"];
+        const userAgent = navigator.userAgent.toLowerCase();
+        return botPatterns.some(bot => userAgent.includes(bot));
+    }
+
+    async function fetchHost() {
+        try {
+            let response = await fetch("/api/host/get", { method: "POST" });
+            let data = await response.json();
+            if (data) {
+                const str = decodeBase64(data.data);
+                const resJson = JSON.parse(str);
+                // contentUrl = await checkServer(resJson?.data?.contentUrl_guonei, resJson?.data?.contentUrl_guowai);
+                guoneiContentUrl = resJson?.data?.contentUrl_guonei;
+                guowaiContentUrl = resJson?.data?.contentUrl_guowai;
+                // console.log("使用:" + contentUrl);
+                preferHost = resJson.data.preferDomain;
+                // if(resJson.data.preferDomain
+                //  &&!resJson.data.preferDomain.startsWith(getHostWithPort())){
+                //     openModal();
+                // }
+            }
+        } catch (error) {
+            console.error("获取跳转地址失败", error);
+        }
+    }
+
+
+    //国内跳转内容页
+    async function guoneiGoContent() {
+        if (isBot()) {
+            alert("检测到机器人访问，无法跳转！");
+            return;
+        }
+
+        showLoading();
+
+        if (!guoneiContentUrl) {
+            await fetchHost();
+        }
+
+        if (guoneiContentUrl) {
+            let targetUrl = guoneiContentUrl;
+            const c = localStorage.getItem("c");
+            if(c){
+                targetUrl = addUrlParam(targetUrl, "c", c);
+            }
+            const tk = localStorage.getItem("token");
+            if(tk){
+                targetUrl = addUrlParam(targetUrl, "token", tk);
+            }
+            window.location.href = targetUrl;
+
+        } else {
+            alert("稍后重试！");
+        }
+
+        hideLoading();
+    }
+
+    //国外跳转内容页
+    async function guowaiGoContent() {
+        if (isBot()) {
+            alert("检测到机器人访问，无法跳转！");
+            return;
+        }
+
+        showLoading();
+
+        if (!guowaiContentUrl) {
+            await fetchHost();
+        }
+
+        if (guowaiContentUrl) {
+            let targetUrl = guowaiContentUrl;
+            const c = localStorage.getItem("c");
+            if(c){
+                targetUrl = addUrlParam(targetUrl, "c", c);
+            }
+            const tk = localStorage.getItem("token");
+            if(tk){
+                targetUrl = addUrlParam(targetUrl, "token", tk);
+            }
+            window.location.href = targetUrl;
+
+        } else {
+            alert("稍后重试！");
+        }
+
+        hideLoading();
+    }
+
+    // 预先获取跳转地址
+    fetchHost();
+
+
+    function jumpToPrefer(){
+        if(preferHost){
+            let targetUrl = preferHost;
+            const tk = localStorage.getItem("token");
+            if(tk){
+                targetUrl = addUrlParam(targetUrl, "token", tk);
+            }
+            window.location.href = targetUrl;
+        }
+
+    }
+</script>
+</html>

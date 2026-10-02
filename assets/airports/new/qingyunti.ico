@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="h-full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>安全验证</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--bg:#f7fafc;--card:#fff;--text:#1f2937;--muted:#6b7280;--btn:#2563eb;--btnH:#1d4ed8;--bd:#e5e7eb;}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0b0f19;--card:#111827;--text:#e5e7eb;--muted:#9ca3af;--btn:#3b82f6;--btnH:#2563eb;--bd:#1f2937;}
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center}
+.wrap{width:100%;max-width:480px;padding:24px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:28px;box-shadow:0 10px 20px rgba(0,0,0,.06)}
+h1{margin:0 0 8px;font-size:22px}
+p{margin:0 0 16px;color:var(--muted);line-height:1.6}
+button{appearance:none;border:0;border-radius:10px;padding:12px 18px;background:var(--btn);color:#fff;font-size:15px;cursor:pointer;width:100%}
+button:hover{background:var(--btnH)}
+.small{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>访问验证</h1>
+    <p>为防止恶意访问，请点击下方按钮继续浏览。</p>
+    <form method="post" action="/verify">
+      <input type="hidden" name="next" id="nextField" value="/">
+      <button type="submit">继续访问</button>
+      <div class="small">目标：<span id="preview">/</span></div>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  let next = params.get('next') || '/';
+  if(next==='/' && location.hash){next = '/' + location.hash;}
+  if(/^(https?:)?\/\//i.test(next)) next = '/';
+  document.getElementById('nextField').value = next;
+  document.getElementById('preview').textContent = next;
+})();
+</script>
+</body>
+</html>
