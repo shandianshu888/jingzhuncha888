@@ -158,8 +158,12 @@ footer {
   color: #4e5d74;
 }
 
+.nav-social{display:inline-flex!important;align-items:center;justify-content:center;width:30px;height:30px;margin:25px -8px 0 0!important;padding:0!important;border:1px solid rgba(17,28,53,.18);border-radius:50%;color:#263650!important;transition:.18s ease}.nav-social::after{display:none!important}.nav-social:hover{border-color:#5577f2;background:#5577f2;color:#fff!important;transform:translateY(-1px)}.nav-social svg{width:15px;height:15px;fill:currentColor}.nav-social.nav-github svg{width:16px;height:16px}
+.home-entry{padding-top:95px}.home-entry .review-card p{max-width:none}.home-entry .review-card.featured .rank,.home-entry .review-card.featured .card-bottom{color:#aebbd0}.home-entry .review-card.featured .tag{background:#5577f2;color:#fff}.home-entry .review-card.featured .meter-line i{background:#91a8ff}.home-method{margin-top:0}.home-dark-link{display:inline-flex;border-color:rgba(255,255,255,.45)!important;color:#fff!important}.home-tools p{max-width:610px;color:#526077;font-size:14px;line-height:1.8}.home-tool-links{display:flex;gap:10px;flex-wrap:wrap}.home-tool-links a{padding:13px 18px;border:1px solid #b8c5d9;color:#111c35;text-decoration:none;font-size:12px;font-weight:800;transition:.18s}.home-tool-links a:first-child,.home-tool-links a:hover{background:#111c35;border-color:#111c35;color:#fff}
+
 @media (max-width: 850px) {
   .main-nav.mobile-open {
     background: rgba(242, 246, 251, 0.98);
   }
+  .main-nav.mobile-open .nav-social{display:inline-flex!important;width:38px;height:38px;margin:10px 10px 0 0!important}.home-entry{padding-top:70px}.home-tools{padding-top:65px;padding-bottom:65px}.home-tool-links{margin-top:28px}
 }
