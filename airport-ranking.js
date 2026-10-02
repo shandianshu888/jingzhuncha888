@@ -1,4 +1,4 @@
-const AIRPORT_RANKING=[
+window.AIRPORT_RANKING=[
 {name:'闪电鼠',tag:'综合首选',logo:'assets/airports/shandianshu.jpg',url:'https://chenpin.shandianshuaff.com/#/?code=m28TvPVX',price:'￥15.40/月',traffic:'120GB',device:'不限设备 · 1×倍率',verified:true,summary:'套餐跨度完整，兼顾入门、多设备和较高流量需求。'},
 {name:'大佬云',tag:'档位丰富',logo:'assets/airports/dalaoyun.png',url:'https://chenpin01.dalaoyunaff.com/#/?code=GQ6CL6Km',price:'￥16.10/月',traffic:'130GB',device:'不限设备',verified:true,summary:'月付、年付和一次性流量包并存，购买周期较灵活。'},
 {name:'环球梯',tag:'流量灵活',logo:'assets/airports/huanqiuti.jpg',url:'https://chenpingan01.huanqiutiaff.com/#/?code=FGCcYdFo',price:'￥15.40/月',traffic:'120GB',device:'截图标注 3 线路',verified:true,summary:'月付与一次性流量包并存，适合常用和备用需求。'},
