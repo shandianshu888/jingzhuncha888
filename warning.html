@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="机场跑路预警：社区数据库历史跑路记录、跑路前风险信号、购买前检查与跑路后的处理步骤。">
+  <title>机场跑路预警｜机场精准查</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark"><i></i><i></i><i></i></span><span>机场<span class="brand-accent">精准查</span></span></a>
+    <nav class="main-nav"><a href="recommend.html">机场推荐</a><a href="reviews.html">机场测评</a><a href="compare.html">机场对比</a><a href="help.html">使用帮助</a><a href="library.html">知识库</a><a href="bonus.html">福利中心</a><a class="active warning-nav" href="warning.html">机场跑路预警</a><a href="about.html">关于本站</a></nav>
+    <button class="search-btn" id="searchBtn"><span></span> 搜索</button><button class="menu-btn" id="menuBtn"><b></b><b></b></button>
+  </header>
+
+  <main class="page-main warning-page">
+    <section class="page-hero warning-hero">
+      <div><span class="page-index danger-index">RISK ALERT / 08</span><h1>机场跑路预警</h1></div>
+      <div><p class="page-lead">用历史记录识别风险信号，用可执行步骤降低损失。这里记录的是社区数据库中的历史状态，不对仍在运营的服务作无依据判断。</p><div class="page-meta"><span>10 个历史案例</span><span>6 类风险信号</span><span>2026.10.02 整理</span></div></div>
+    </section>
+
+    <section class="risk-banner"><div><span>重要说明</span><h2>“跑路”是社区记录状态，不等于本站独立调查结论。</h2></div><p>名单仅选取公开数据库中明确标注“跑路”或“已跑路”的历史条目，没有把“失联”“维护”“不推荐”或存在争议的机场混入。名称可能被后来者重复使用，购买前仍需核对域名、运营主体与时间。</p></section>
+
+    <div class="content-title"><h2>历史跑路记录</h2><span>数据源最近记录于 2024 年</span></div>
+    <section class="risk-database">
+      <div class="risk-toolbar"><div><span class="page-index danger-index">COMMUNITY DATABASE</span><h3>已标记跑路的 10 个案例</h3></div><label>筛选记录<input id="riskSearch" type="search" placeholder="输入机场名称..."></label></div>
+      <div class="risk-table-wrap">
+        <table class="risk-table">
+          <thead><tr><th>序号</th><th>机场名称</th><th>数据库状态</th><th>记录日期</th><th>风险提示</th></tr></thead>
+          <tbody id="riskRows">
+            <tr><td>01</td><td><strong>DuangCloud</strong></td><td><span>跑路</span></td><td>2024.01.06</td><td>历史名称仅用于风险教育，谨防同名重开。</td></tr>
+            <tr><td>02</td><td><strong>六尺巷</strong></td><td><span>跑路</span></td><td>2024.02.20</td><td>购买前核对运营时长与售后响应。</td></tr>
+            <tr><td>03</td><td><strong>流量光</strong></td><td><span>跑路</span></td><td>2024.03.26</td><td>不要因超低年付价格忽略资金风险。</td></tr>
+            <tr><td>04</td><td><strong>v2Club / 蓝岸</strong></td><td><span>跑路</span></td><td>2024.03.27</td><td>改名或换域名时应重新核验主体。</td></tr>
+            <tr><td>05</td><td><strong>萌喵</strong></td><td><span>跑路</span></td><td>2024.06.11</td><td>套餐仍可付款但售后失联是高危信号。</td></tr>
+            <tr><td>06</td><td><strong>冲浪猫 / CLM</strong></td><td><span>已跑路</span></td><td>2024.06.11</td><td>订阅异常后不要继续充值等待恢复。</td></tr>
+            <tr><td>07</td><td><strong>CreamData</strong></td><td><span>已跑路</span></td><td>2024.07.11</td><td>长期低价促销需结合运营成本判断。</td></tr>
+            <tr><td>08</td><td><strong>TLY</strong></td><td><span>已跑路</span></td><td>2024.07.11</td><td>保留订单、支付记录和公告截图。</td></tr>
+            <tr><td>09</td><td><strong>Skicat / Catree</strong></td><td><span>已跑路</span></td><td>2024.07.11</td><td>品牌更名不能替代运营信息核查。</td></tr>
+            <tr><td>10</td><td><strong>自由鲸</strong></td><td><span>已跑路</span></td><td>2024.07.11</td><td>优先月付，控制单次预付金额。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="risk-source">来源：GitHub 社区项目「跑路机场名单收集（2024）」；本站于 2026.10.02 摘录其中明确标记为跑路的 10 条记录。<a href="https://github.com/fornevercollect/airport-check" target="_blank" rel="nofollow noopener">查看原始数据库 ↗</a></p>
+    </section>
+
+    <div class="content-title"><h2>跑路前常见信号</h2><span>单个信号不等于跑路，多个同时出现需警惕</span></div>
+    <section class="warning-signals">
+      <article class="high-risk"><span>01 / CASH FLOW</span><h3>突然主推超长期套餐</h3><p>短时间密集推出三年、五年、终身套餐，折扣明显偏离正常运营成本，可能是在快速回笼资金。</p></article>
+      <article><span>02 / SUPPORT</span><h3>客服和工单持续失联</h3><p>不是偶发延迟，而是多个渠道长期无人回复、群聊禁言、公告停止更新。</p></article>
+      <article><span>03 / PAYMENT</span><h3>支付方式频繁变化</h3><p>收款账户反复更换、只接受难以追索的付款方式，或付款后长期不自动开通。</p></article>
+      <article><span>04 / SERVICE</span><h3>节点大面积失效</h3><p>节点连续多日不可用、订阅无法更新、流量异常清零，且运营方不给出修复时间。</p></article>
+      <article><span>05 / IDENTITY</span><h3>域名与品牌突然更换</h3><p>旧站无法访问，新站缺少历史公告；品牌更名但不解释迁移关系与用户权益。</p></article>
+      <article><span>06 / PROMOTION</span><h3>故障期间仍高强度促销</h3><p>服务明显恶化却持续催促充值、限时倒计时反复重置，需要暂停付款并观察。</p></article>
+    </section>
+
+    <section class="prevention-section">
+      <div class="prevention-title"><span class="page-index danger-index">BEFORE BUYING</span><h2>预防跑路：把最大损失限制在一个月。</h2><p>无法保证任何服务永不停止，但可以控制预付金额、减少账户暴露，并提前准备替代方案。</p></div>
+      <div class="check-list">
+        <article><b>01</b><div><h3>优先月付或短周期</h3><p>首次购买不要直接年付。连续观察至少一个结算周期，再决定是否续费。</p></div></article>
+        <article><b>02</b><div><h3>拒绝“终身套餐”幻觉</h3><p>服务存在服务器、带宽和维护成本，“终身”承诺无法消除经营风险。</p></div></article>
+        <article><b>03</b><div><h3>保留付款与沟通证据</h3><p>保存订单号、套餐规则、付款记录、客服承诺和活动页面截图。</p></div></article>
+        <article><b>04</b><div><h3>不要复用重要密码</h3><p>注册使用独立邮箱别名和唯一密码；不要提交与服务无关的身份证件或隐私信息。</p></div></article>
+        <article><b>05</b><div><h3>准备一条备用线路</h3><p>工作、学习或跨境业务用户应有不同运营主体的备用方案，避免单点中断。</p></div></article>
+        <article><b>06</b><div><h3>定期重新评估</h3><p>关注运营公告、工单响应、节点维护和促销强度，不把过去稳定当作永久保证。</p></div></article>
+      </div>
+    </section>
+
+    <div class="content-title"><h2>真的跑路后怎么处理</h2><span>先止损，再留证，最后迁移</span></div>
+    <section class="after-runway">
+      <article><span>立即</span><h3>停止续费与自动付款</h3><p>取消订阅、自动续费和待支付订单，不要因“即将恢复”的无来源消息继续充值。</p></article>
+      <article><span>当天</span><h3>保存完整证据</h3><p>截取官网状态、订单、支付凭证、公告、工单和聊天记录，并记录发现异常的时间线。</p></article>
+      <article><span>当天</span><h3>撤销订阅与凭证</h3><p>从客户端删除旧订阅；若复用了邮箱密码，立即改密并开启双重验证。</p></article>
+      <article><span>尽快</span><h3>向支付渠道申诉</h3><p>在渠道允许的期限内提交未履约证据申请退款或争议处理，不保证成功但应及时尝试。</p></article>
+      <article><span>迁移</span><h3>更换可信来源配置</h3><p>不要从陌生群聊下载所谓“恢复订阅”或破解客户端，谨防二次钓鱼和恶意软件。</p></article>
+      <article><span>反馈</span><h3>基于证据公开提醒</h3><p>陈述可验证事实与时间，不公开个人隐私、不组织骚扰，也不要传播未经证实的身份信息。</p></article>
+    </section>
+
+    <section class="emergency-note"><div><span>QUICK ACTION</span><h2>最重要的三件事</h2></div><ol><li><b>01</b>停止付款</li><li><b>02</b>保存证据</li><li><b>03</b>更换密码与订阅</li></ol></section>
+  </main>
+
+  <footer><span>© 2026 机场精准查</span><span>机场跑路预警 · 2026.10.02</span><a href="index.html">返回首页 ↑</a></footer>
+  <div class="search-panel" id="searchPanel"><button class="close-search" id="closeSearch">×</button><div class="search-inner"><span>⌕</span><input placeholder="搜索风险知识..."><small>ESC 关闭</small></div></div>
+  <script src="page.js"></script><script src="warning.js"></script>
+</body>
+</html>
