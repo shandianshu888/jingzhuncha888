@@ -1,4 +1,22 @@
-if(location.pathname.endsWith('recommend.html')){const trust=document.createElement('script');trust.src='trust-section.js';document.head.appendChild(trust)}const favicon=document.createElement('link');favicon.rel='icon';favicon.type='image/svg+xml';favicon.href='assets/logos/logo-01-radar.svg';document.head.appendChild(favicon);const themeMeta=document.createElement('meta');themeMeta.name='theme-color';themeMeta.content='#111c35';document.head.appendChild(themeMeta);const titles={'recommend.html':'机场推荐｜机场精准查','reviews.html':'机场测评｜机场精准查','compare.html':'机场对比｜机场精准查','help.html':'使用帮助｜机场精准查','library.html':'知识库｜机场精准查','bonus.html':'福利中心｜机场精准查','about.html':'关于本站｜机场精准查'};const current=location.pathname.split('/').pop();if(titles[current])document.title=titles[current];const pagePanel=document.getElementById('searchPanel');const openSearch=document.getElementById('searchBtn');const closeSearch=document.getElementById('closeSearch');if(openSearch&&pagePanel)openSearch.onclick=()=>pagePanel.classList.add('open');if(closeSearch&&pagePanel)closeSearch.onclick=()=>pagePanel.classList.remove('open');document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pagePanel)pagePanel.classList.remove('open')});const menu=document.getElementById('menuBtn');if(menu)menu.onclick=()=>document.querySelector('.main-nav').classList.toggle('mobile-open');
+const path = location.pathname.toLowerCase();
+const isRecommend = path.includes('recommend');
+const isReviews = path.includes('reviews');
+const isCompare = path.includes('compare');
+const isHelp = path.includes('help');
+
+if(isRecommend){const trust=document.createElement('script');trust.src='trust-section.js';document.head.appendChild(trust)}
+const favicon=document.createElement('link');favicon.rel='icon';favicon.type='image/svg+xml';favicon.href='assets/logos/logo-01-radar.svg';document.head.appendChild(favicon);
+const themeMeta=document.createElement('meta');themeMeta.name='theme-color';themeMeta.content='#111c35';document.head.appendChild(themeMeta);
+
+if(isRecommend)document.title='机场推荐｜机场精准查';
+else if(isReviews)document.title='机场测评｜机场精准查';
+else if(isCompare)document.title='机场对比｜机场精准查';
+else if(isHelp)document.title='使用帮助｜机场精准查';
+else if(path.includes('library'))document.title='知识库｜机场精准查';
+else if(path.includes('bonus'))document.title='福利中心｜机场精准查';
+else if(path.includes('about'))document.title='关于本站｜机场精准查';
+
+const pagePanel=document.getElementById('searchPanel');const openSearch=document.getElementById('searchBtn');const closeSearch=document.getElementById('closeSearch');if(openSearch&&pagePanel)openSearch.onclick=()=>pagePanel.classList.add('open');if(closeSearch&&pagePanel)closeSearch.onclick=()=>pagePanel.classList.remove('open');document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pagePanel)pagePanel.classList.remove('open')});const menu=document.getElementById('menuBtn');if(menu)menu.onclick=()=>document.querySelector('.main-nav').classList.toggle('mobile-open');
 
 const mainNav=document.querySelector('.main-nav');
 if(mainNav&&!mainNav.querySelector('a[href="warning.html"]')){
@@ -18,7 +36,7 @@ if(mainNav&&!mainNav.querySelector('a[href="friends.html"]')){
   mainNav.insertBefore(friendsLink,warningLink?warningLink.nextSibling:aboutLink);
 }
 
-if(current==='recommend.html'){
+if(isRecommend){
   const voucherCodes=['sd88','dly88','hq66','ll88','yjx888','sx0077'];
   document.querySelectorAll('.airport-card .price-head').forEach((head,index)=>{
     const code=voucherCodes[index];
@@ -38,5 +56,7 @@ if(current==='recommend.html'){
     head.insertBefore(badge,head.querySelector('strong'));
   });
 }
-if(location.pathname.endsWith('reviews.html')){const s=document.createElement('script');s.src='reviews-articles.js';document.head.appendChild(s)}if(location.pathname.endsWith('compare.html')){const s=document.createElement('script');s.src='compare-status.js';document.head.appendChild(s)}
-if(location.pathname.endsWith('help.html')){const s=document.createElement('script');s.src='help-guides.js';document.head.appendChild(s)}
+if(isReviews){const s=document.createElement('script');s.src='reviews-articles.js';document.head.appendChild(s)}
+if(isCompare){const s=document.createElement('script');s.src='compare-status.js';document.head.appendChild(s)}
+if(isHelp){const s=document.createElement('script');s.src='help-guides.js';document.head.appendChild(s)}
+
