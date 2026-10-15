@@ -158,6 +158,155 @@ footer {
   color: #4e5d74;
 }
 
+/* ============================================================
+   Site Footer (4-Column Layout matching screenshot)
+   ============================================================ */
+.site-footer,
+footer.site-footer {
+  display: block;
+  background: var(--paper, #f2f0ea);
+  border-top: 1px solid var(--line, rgba(16, 23, 22, 0.12));
+  padding: 68px 6vw 36px;
+  color: #556375;
+  font-family: var(--sans, 'Manrope', 'Noto Sans SC', sans-serif);
+}
+
+.footer-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5vw;
+  padding-bottom: 48px;
+}
+
+.footer-brand-side {
+  flex: 0 0 320px;
+  max-width: 360px;
+}
+
+.footer-brand-side .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--ink, #101716);
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.footer-slogans {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.footer-slogans span {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink, #101716);
+  letter-spacing: -0.01em;
+}
+
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #657383;
+  margin: 0;
+}
+
+.footer-nav-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(110px, 1fr));
+  gap: 32px;
+}
+
+.footer-nav-col h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink, #101716);
+  margin: 0 0 18px 0;
+  letter-spacing: -0.01em;
+}
+
+.footer-nav-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-col ul li a {
+  color: #596574;
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.18s ease, transform 0.18s ease;
+  display: inline-block;
+}
+
+.footer-nav-col ul li a:hover {
+  color: #5577f2;
+  transform: translateX(2px);
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid var(--line, rgba(16, 23, 22, 0.1));
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #7b8794;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom-bar a {
+  color: var(--ink, #101716);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.18s ease;
+}
+
+.footer-bottom-bar a:hover {
+  color: #5577f2;
+}
+
+@media (max-width: 950px) {
+  .footer-main {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-brand-side {
+    max-width: 100%;
+    flex: none;
+  }
+  .footer-nav-grid {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .site-footer,
+  footer.site-footer {
+    padding: 50px 6vw 30px;
+  }
+  .footer-nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
 .nav-social{display:inline-flex!important;align-items:center;justify-content:center;width:30px;height:30px;margin:25px -8px 0 0!important;padding:0!important;border:1px solid rgba(17,28,53,.18);border-radius:50%;color:#263650!important;transition:.18s ease}.nav-social::after{display:none!important}.nav-social:hover{border-color:#5577f2;background:#5577f2;color:#fff!important;transform:translateY(-1px)}.nav-social svg{width:15px;height:15px;fill:currentColor}.nav-social.nav-github svg{width:16px;height:16px}
 .home-entry{padding-top:95px}.home-entry .review-card p{max-width:none}.home-entry .review-card.featured .rank,.home-entry .review-card.featured .card-bottom{color:#aebbd0}.home-entry .review-card.featured .tag{background:#5577f2;color:#fff}.home-entry .review-card.featured .meter-line i{background:#91a8ff}.home-method{margin-top:0}.home-dark-link{display:inline-flex;border-color:rgba(255,255,255,.45)!important;color:#fff!important}.home-tools p{max-width:610px;color:#526077;font-size:14px;line-height:1.8}.home-tool-links{display:flex;gap:10px;flex-wrap:wrap}.home-tool-links a{padding:13px 18px;border:1px solid #b8c5d9;color:#111c35;text-decoration:none;font-size:12px;font-weight:800;transition:.18s}.home-tool-links a:first-child,.home-tool-links a:hover{background:#111c35;border-color:#111c35;color:#fff}
 

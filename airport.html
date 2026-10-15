@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="机场精准查机场独立档案：包含16家机场300字详细简介、营业时间、IEPL/IPLC专线架构、晚高峰与节假日测速数据。">
+  <title>机场简介与实测档案｜机场精准查</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="airport.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><i></i><i></i><i></i></span>
+      <span>机场<span class="brand-accent">精准查</span></span>
+    </a>
+    <nav class="main-nav">
+      <a class="active" href="recommend.html">机场推荐</a>
+      <a href="reviews.html">机场测评</a>
+      <a href="compare.html">机场对比</a>
+      <a href="help.html">使用帮助</a>
+      <a href="library.html">知识库</a>
+      <a href="bonus.html">福利中心</a>
+      <a class="warning-nav" href="warning.html">机场跑路预警</a>
+      <a href="friends.html">友链</a>
+      <a href="about.html">关于本站</a>
+    </nav>
+    <button class="search-btn" id="searchBtn"><span></span> 搜索</button>
+    <button class="menu-btn" id="menuBtn"><b></b><b></b></button>
+  </header>
+
+  <main class="page-main airport-detail-main">
+    <section id="airportDetailApp">
+      <div style="padding: 60px 20px; text-align: center; color: #657188;">
+        正在加载机场独立档案与实测数据...
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 机场精准查</span>
+    <span>机场独立档案与深度测速</span>
+    <a href="recommend.html">返回推荐榜 ↑</a>
+  </footer>
+
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">优惠码已复制到剪贴板！</div>
+
+  <div class="search-panel" id="searchPanel">
+    <button class="close-search" id="closeSearch">×</button>
+    <div class="search-inner">
+      <span>⌕</span>
+      <input placeholder="搜索机场、简介或实测数据...">
+      <small>ESC 关闭</small>
+    </div>
+  </div>
+
+  <script src="airport-data.js"></script>
+  <script src="airport-detail.js"></script>
+  <script src="page.js"></script>
+</body>
+</html>

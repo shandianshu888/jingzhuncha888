@@ -15,6 +15,8 @@ else if(isHelp)document.title='使用帮助｜机场精准查';
 else if(path.includes('library'))document.title='知识库｜机场精准查';
 else if(path.includes('bonus'))document.title='福利中心｜机场精准查';
 else if(path.includes('about'))document.title='关于本站｜机场精准查';
+else if(path.includes('privacy'))document.title='隐私政策｜机场精准查';
+else if(path.includes('terms'))document.title='使用条款｜机场精准查';
 
 const pagePanel=document.getElementById('searchPanel');const openSearch=document.getElementById('searchBtn');const closeSearch=document.getElementById('closeSearch');if(openSearch&&pagePanel)openSearch.onclick=()=>pagePanel.classList.add('open');if(closeSearch&&pagePanel)closeSearch.onclick=()=>pagePanel.classList.remove('open');document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pagePanel)pagePanel.classList.remove('open')});const menu=document.getElementById('menuBtn');if(menu)menu.onclick=()=>document.querySelector('.main-nav').classList.toggle('mobile-open');
 
@@ -64,4 +66,72 @@ if(isRecommend){
 if(isReviews){const s=document.createElement('script');s.src='reviews-articles.js';document.head.appendChild(s)}
 if(isCompare){const s=document.createElement('script');s.src='compare-status.js';document.head.appendChild(s)}
 if(isHelp){const s=document.createElement('script');s.src='help-guides.js';document.head.appendChild(s)}
+
+function renderSiteFooter() {
+  const footer = document.querySelector('footer');
+  if (!footer) return;
+  footer.className = 'site-footer';
+  footer.innerHTML = `
+    <div class="footer-inner">
+      <div class="footer-main">
+        <div class="footer-brand-side">
+          <a class="brand" href="index.html">
+            <span class="brand-mark"><i></i><i></i><i></i></span>
+            <span>机场<span class="brand-accent">精准查</span></span>
+          </a>
+          <div class="footer-slogans">
+            <span>真实线路独立实测</span>
+            <span>高性价比优质选拔</span>
+          </div>
+          <p class="footer-desc">不收厂商软文，用数据说话。围绕速度、稳定性与隐私安全，为全球用户提供透明、客观的机场测评与避坑指南。</p>
+        </div>
+
+        <div class="footer-nav-grid">
+          <div class="footer-nav-col">
+            <h4>内容</h4>
+            <ul>
+              <li><a href="library.html">博客</a></li>
+              <li><a href="library.html">专题</a></li>
+              <li><a href="compare.html">对比</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>机场</h4>
+            <ul>
+              <li><a href="recommend.html">机场推荐</a></li>
+              <li><a href="recommend.html#recommend">性价比机场</a></li>
+              <li><a href="bonus.html">机场优惠码</a></li>
+              <li><a href="reviews.html">机场库</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>资源</h4>
+            <ul>
+              <li><a href="help.html#downloads">客户端下载</a></li>
+              <li><a href="help.html#troubleshoot">常见问题</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>关于与政策</h4>
+            <ul>
+              <li><a href="about.html">关于本站</a></li>
+              <li><a href="privacy.html">隐私政策</a></li>
+              <li><a href="terms.html">使用条款</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 机场精准查 · 保留所有权利</span>
+        <span>数据持续更新 · 独立第三方评测</span>
+        <a href="#top">返回顶部 ↑</a>
+      </div>
+    </div>
+  `;
+}
+renderSiteFooter();
 

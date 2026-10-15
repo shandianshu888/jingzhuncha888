@@ -5,11 +5,13 @@
   <url><loc>https://jcjingzhuncha.com/reviews.html</loc><lastmod>2026-10-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jcjingzhuncha.com/compare.html</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://jcjingzhuncha.com/help.html</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jcjingzhuncha.com/library.html</loc><lastmod>2026-10-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jcjingzhuncha.com/bonus.html</loc><lastmod>2026-10-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://jcjingzhuncha.com/warning.html</loc><lastmod>2026-10-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jcjingzhuncha.com/friends.html</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://jcjingzhuncha.com/about.html</loc><lastmod>2026-10-02</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://jcjingzhuncha.com/privacy.html</loc><lastmod>2026-10-15</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://jcjingzhuncha.com/terms.html</loc><lastmod>2026-10-15</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
 
   <url><loc>https://jcjingzhuncha.com/library.html?id=1</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://jcjingzhuncha.com/library.html?id=2</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -51,4 +53,32 @@
   <url><loc>https://jcjingzhuncha.com/library.html?id=38</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jcjingzhuncha.com/library.html?id=39</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jcjingzhuncha.com/library.html?id=40</loc><lastmod>2026-10-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=41</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=42</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=43</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=44</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=45</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=46</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=47</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=48</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=49</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/library.html?id=50</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <url><loc>https://jcjingzhuncha.com/airport.html</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=shandianshu</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=dalaoyun</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=huanqiuti</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=liulianyun</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=yunjiexian</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=shenxing</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=ermaoyun</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=guangsuyun</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=bianyuan</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=flybit</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=longmaoyun</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=qingyunti</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=dageyun</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=paofuyun</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=xingdaomeng</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jcjingzhuncha.com/airport.html?id=wangjikuai</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

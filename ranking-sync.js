@@ -14,10 +14,36 @@
   const cards=[...document.querySelectorAll('.airport-card')];
   cards.forEach((card,i)=>{
    if(!data[i])return;
+   const a=data[i];
    card.id=`airport-rank-${i+1}`;
    card.setAttribute('data-rank',String(i+1));
+
+   let actions=card.querySelector('.airport-actions')||card.querySelector('.airport-card-actions');
+   let introBtn=card.querySelector('.airport-intro-btn');
+   const link=card.querySelector('.airport-link');
+   if(!actions&&link){
+     actions=document.createElement('div');
+     actions.className='airport-actions';
+     link.parentNode.insertBefore(actions,link);
+     introBtn=document.createElement('a');
+     introBtn.className='airport-intro-btn';
+     introBtn.href=`airport.html?id=${a.id}`;
+     introBtn.innerHTML=`查看机场简介 <span>📖</span>`;
+     actions.appendChild(introBtn);
+     actions.appendChild(link);
+   }else if(introBtn){
+     introBtn.href=`airport.html?id=${a.id}`;
+   }
+
    if(i<9)return;
-   const a=data[i];card.classList.remove('airport-card-new');const logo=card.querySelector('.airport-logo');if(logo)logo.innerHTML=brand(a);const tag=card.querySelector('.discount-pill');if(tag)tag.textContent=a.tag;const summary=card.querySelector('.airport-body>p');if(summary)summary.textContent=a.summary;const label=card.querySelector('.reason-label');if(label)label.textContent='公开资料核验';const reasons=card.querySelector('.airport-reasons');if(reasons)reasons.innerHTML=`<li>公开入门价：${a.price}</li><li>公开套餐流量：${a.traffic}；${a.device}</li><li>综合定位：${overall(i)}，适合先从短周期套餐开始体验</li>`;const status=card.querySelector('.listing-status');if(status)status.outerHTML=`<div class="price-box"><div class="price-head"><span>公开入门套餐</span><strong>${a.price}</strong></div><div class="price-list"><div>套餐流量<strong>${a.traffic}</strong></div><div>设备/倍率<strong>${a.device}</strong></div><div>综合定位<strong>${overall(i)}</strong></div><div>场景表现<strong>${assessments[i][2]}</strong></div></div></div>`;const link=card.querySelector('.airport-link');if(link){link.href=a.url;link.innerHTML=`查看${a.name}套餐 <span>↗</span>`}
+   card.classList.remove('airport-card-new');
+   const logo=card.querySelector('.airport-logo');if(logo)logo.innerHTML=brand(a);
+   const tag=card.querySelector('.discount-pill');if(tag)tag.textContent=a.tag;
+   const summary=card.querySelector('.airport-body>p');if(summary)summary.textContent=a.summary;
+   const label=card.querySelector('.reason-label');if(label)label.textContent='公开资料核验';
+   const reasons=card.querySelector('.airport-reasons');if(reasons)reasons.innerHTML=`<li>公开入门价：${a.price}</li><li>公开套餐流量：${a.traffic}；${a.device}</li><li>综合定位：${overall(i)}，适合先从短周期套餐开始体验</li>`;
+   const status=card.querySelector('.listing-status');if(status)status.outerHTML=`<div class="price-box"><div class="price-head"><span>公开入门套餐</span><strong>${a.price}</strong></div><div class="price-list"><div>套餐流量<strong>${a.traffic}</strong></div><div>设备/倍率<strong>${a.device}</strong></div><div>综合定位<strong>${overall(i)}</strong></div><div>场景表现<strong>${assessments[i][2]}</strong></div></div></div>`;
+   if(link){link.href=a.url;link.innerHTML=`查看${a.name}套餐 <span>↗</span>`}
   });
   const grid=document.querySelector('.airport-grid');
   if(grid&&!document.querySelector('.rank-jump')){
@@ -34,7 +60,11 @@
   }
   const disclosure=document.querySelector('.disclosure');if(disclosure)disclosure.textContent='价格与流量来自服务商页面、用户截图或 Bing 可检索公开资料；场景标签是依据套餐结构、线路资料与榜单权重形成的编辑综合评估。活动与实际结算价可能调整，请以服务商页面为准。本页包含推广链接。'
  }
- if(isReviews){const grid=document.querySelector('.review-cards');if(grid)grid.innerHTML=data.map((a,i)=>`<article class="review-detail"><div class="review-brand">${brand(a)}<div><span>${String(i+1).padStart(2,'0')} / ${a.tag}</span><h3>${a.name}</h3></div></div><p>${a.summary}</p><div class="verified-data"><b>${a.price}<small>公开入门价</small></b><b>${a.traffic}<small>公开流量</small></b><b>${a.device}<small>设备/倍率</small></b><b>${overall(i)}<small>综合评估</small></b></div><ul><li>排名：当前综合推荐榜第 ${i+1} 名</li><li>场景：${assessments[i].join(' · ')}</li><li>结论：第 7 名以后与前六名保持小幅梯度，更适合作为按预算和场景选择的备选</li></ul><a href="${a.url}" target="_blank" rel="sponsored nofollow noopener">查看${a.name}页面 ↗</a></article>`).join('');const meta=document.querySelector('.page-meta');if(meta&&meta.children[0])meta.children[0].textContent=`${data.length} 家机场`;const title=[...document.querySelectorAll('.content-title h2')].find(e=>e.textContent.includes('机场逐项测评'));if(title)title.textContent=`${data.length} 家机场逐项测评`}
+ if(isReviews){
+  const grid=document.querySelector('.review-cards');
+  if(grid)grid.innerHTML=data.map((a,i)=>`<article class="review-detail"><div class="review-brand">${brand(a)}<div><span>${String(i+1).padStart(2,'0')} / ${a.tag}</span><h3>${a.name}</h3></div></div><p>${a.summary}</p><div class="verified-data"><b>${a.price}<small>公开入门价</small></b><b>${a.traffic}<small>公开流量</small></b><b>${a.device}<small>设备/倍率</small></b><b>${overall(i)}<small>综合评估</small></b></div><ul><li>排名：当前综合推荐榜第 ${i+1} 名</li><li>场景：${assessments[i].join(' · ')}</li><li>结论：第 7 名以后与前六名保持小幅梯度，更适合作为按预算和场景选择的备选</li></ul><div class="review-actions"><a class="review-intro-btn" href="airport.html?id=${a.id}">查看${a.name}独立简介与测速 📖</a><a class="review-link" href="${a.url}" target="_blank" rel="sponsored nofollow noopener">查看${a.name}页面 ↗</a></div></article>`).join('');
+  const meta=document.querySelector('.page-meta');if(meta&&meta.children[0])meta.children[0].textContent=`${data.length} 家机场`;
+  const title=[...document.querySelectorAll('.content-title h2')].find(e=>e.textContent.includes('机场逐项测评'));if(title)title.textContent=`${data.length} 家机场逐项测评`;
+ }
  if(isCompare){const body=document.querySelector('.compare-table tbody');if(body)body.innerHTML=data.map((a,i)=>`<tr><td><b>${i+1}</b> ${a.name}</td><td>${a.price}</td><td>${a.traffic}</td><td>${a.device}</td>${assessments[i].map(v=>`<td>${v}</td>`).join('')}</tr>`).join('');const meta=document.querySelector('.page-meta');if(meta&&meta.children[0])meta.children[0].textContent=`${data.length} 家机场`;const note=document.querySelector('.compare-note p');if(note)note.innerHTML='<b>场景标签</b>依据公开套餐、线路资料、价格流量和当前榜单权重进行统一编辑评估。前六名强调综合表现，第 7 名以后保持小幅梯度，方便按预算和用途选择。'}
 })();
-

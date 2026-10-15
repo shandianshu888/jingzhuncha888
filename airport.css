@@ -1,0 +1,985 @@
+/* ========================================================
+   机场精准查 - 独立机场档案与测速详情页样式 (airport.css)
+   ======================================================== */
+
+/* 机场推荐卡片新增按钮组样式 (recommend.html & reviews.html) */
+.airport-actions,
+.airport-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.airport-intro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 13px 12px;
+  background: #ffffff;
+  border: 1.5px solid #3b66f5;
+  color: #244cdb;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 4px;
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(59, 102, 245, 0.08);
+}
+
+.airport-intro-btn:hover {
+  background: #edf2ff;
+  border-color: #1e3eb8;
+  color: #173dbd;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 102, 245, 0.18);
+}
+
+.airport-intro-btn span {
+  font-size: 14px;
+}
+
+.airport-link {
+  margin-top: 0;
+  border-radius: 4px;
+  transition: all .2s ease;
+}
+
+.airport-link:hover {
+  background: #1b2a4a;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 580px) {
+  .airport-actions,
+  .airport-card-actions {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* 测评列表中的独立档案跳转按钮 */
+.review-actions {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.review-intro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px 12px;
+  background: #edf2ff;
+  border: 1px solid #b9c8ec;
+  color: #2447b9;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 4px;
+  transition: all .2s ease;
+}
+
+.review-intro-btn:hover {
+  background: #dbe5ff;
+  border-color: #3b66f5;
+}
+
+/* ========================================================
+   独立界面 (airport.html) 专用视觉组件
+   ======================================================== */
+
+.airport-detail-main {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 30px 5vw 80px;
+}
+
+/* 面包屑导航 */
+.airport-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #657188;
+  margin-bottom: 22px;
+  font-family: var(--mono);
+}
+
+.airport-breadcrumb a {
+  color: #4264df;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.airport-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.airport-breadcrumb i {
+  font-style: normal;
+  color: #a8b3c5;
+}
+
+.airport-breadcrumb span {
+  color: #17243d;
+  font-weight: 700;
+}
+
+/* 全站 16 家机场横向快捷切换条 */
+.airport-selector-bar {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(38, 55, 89, 0.05);
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 28px;
+  backdrop-filter: blur(10px);
+}
+
+.selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.selector-header span {
+  font: 700 11px var(--mono);
+  color: #4264df;
+  letter-spacing: 0.06em;
+}
+
+.selector-header small {
+  font-size: 12px;
+  color: #657188;
+}
+
+.airport-chips-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  overscroll-behavior-x: contain;
+}
+
+.airport-chip {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  background: #f4f7fc;
+  border: 1px solid #d5dfed;
+  border-radius: 4px;
+  color: #263650;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+
+.airport-chip:hover {
+  background: #e9f0fc;
+  border-color: #a9beea;
+  color: #173dbd;
+}
+
+.airport-chip.active {
+  background: #111c35;
+  border-color: #111c35;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(17, 28, 53, 0.2);
+}
+
+.airport-chip b {
+  font: 700 11px var(--mono);
+  opacity: .8;
+}
+
+.airport-chip.active b {
+  color: #91a8ff;
+}
+
+.airport-chip em {
+  font-style: normal;
+  font-size: 11px;
+  opacity: .75;
+}
+
+/* 顶部核心 Hero 展板 */
+.airport-hero-profile {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 28px;
+  align-items: center;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 248, 255, 0.9));
+  border: 1px solid rgba(66, 100, 223, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(38, 55, 89, 0.08);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.airport-hero-profile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #3b66f5, #5577f2, #7cd1fa);
+}
+
+/* 英雄区 Logo */
+.profile-logo-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  background: #ffffff;
+  border: 1.5px solid #d5dfed;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(38, 55, 89, 0.06);
+}
+
+.profile-logo-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.profile-logo-wrap .profile-monogram {
+  font-size: 28px;
+  font-weight: 900;
+  color: #2447b9;
+  letter-spacing: -0.04em;
+}
+
+.profile-rank-tag {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  padding: 4px 9px;
+  background: #111c35;
+  color: #fff;
+  font: 800 11px var(--mono);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.profile-rank-tag.top-rank {
+  background: #3b66f5;
+}
+
+/* 英雄区中心信息 */
+.profile-info-center {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.profile-title-row h1 {
+  font-size: 32px;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: #111c35;
+}
+
+.profile-badge {
+  padding: 4px 10px;
+  background: #dbe5ff;
+  color: #244cdb;
+  font: 700 11px var(--mono);
+  border-radius: 4px;
+}
+
+.profile-verified-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  background: #e6f9f0;
+  color: #0b7a42;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 4px;
+  border: 1px solid #b7ecd0;
+}
+
+.profile-highlights-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.profile-highlight-tag {
+  font-size: 12px;
+  color: #3e4c64;
+  background: #f0f4fa;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid #dde5f1;
+}
+
+.profile-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding-top: 6px;
+}
+
+.metric-cell {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #d5dfed;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.metric-cell span {
+  display: block;
+  font-size: 11px;
+  color: #657188;
+}
+
+.metric-cell strong {
+  display: block;
+  font: 800 14px var(--mono);
+  color: #17243d;
+  margin-top: 2px;
+}
+
+/* 英雄区右侧 CTA 与优惠券盒子 */
+.profile-cta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 240px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #ccd8ea;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(38, 55, 89, 0.06);
+}
+
+.coupon-ticket-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #fff5f5;
+  border: 1px dashed #f57f7f;
+  border-radius: 4px;
+}
+
+.coupon-ticket-wrap div {
+  display: flex;
+  flex-direction: column;
+}
+
+.coupon-ticket-wrap span {
+  font-size: 10px;
+  color: #a83232;
+  font-weight: 700;
+}
+
+.coupon-ticket-wrap strong {
+  font: 800 15px var(--mono);
+  color: #d32f2f;
+  letter-spacing: 0.05em;
+}
+
+.coupon-copy-btn {
+  padding: 5px 10px;
+  background: #d32f2f;
+  color: #fff;
+  border: 0;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.coupon-copy-btn:hover {
+  background: #b71c1c;
+}
+
+.coupon-copy-btn.copied {
+  background: #0b7a42;
+}
+
+.primary-buy-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #111c35;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 4px;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px rgba(17, 28, 53, 0.25);
+}
+
+.primary-buy-link:hover {
+  background: #254486;
+  transform: translateY(-1px);
+}
+
+.primary-buy-link span {
+  color: #91a8ff;
+  font-size: 16px;
+}
+
+.profile-cta-box small {
+  font-size: 11px;
+  color: #6a778e;
+  text-align: center;
+}
+
+@media (max-width: 980px) {
+  .airport-hero-profile {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px;
+  }
+  .profile-metrics-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profile-cta-box {
+    min-width: auto;
+  }
+}
+
+/* ========================================================
+   核心内容各模块卡片 (简介/营业时间/线路/晚高峰/节假日)
+   ======================================================== */
+
+.profile-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px 32px;
+  box-shadow: 0 10px 32px rgba(38, 55, 89, 0.05);
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e1e9f4;
+}
+
+.profile-card-header div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-card-icon {
+  width: 34px;
+  height: 34px;
+  background: #edf2ff;
+  border: 1px solid #b9c8ec;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+
+.profile-card-header h2 {
+  font-size: 21px;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: #111c35;
+}
+
+.profile-card-tag {
+  font: 700 11px var(--mono);
+  color: #4264df;
+  background: #edf2ff;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* 简介模块 (300字左右) 样式 */
+.profile-intro-text {
+  font-size: 15px;
+  line-height: 2;
+  color: #2e3a4e;
+  background: #f7fafe;
+  border-left: 4px solid #3b66f5;
+  padding: 20px 24px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 22px;
+  letter-spacing: 0.01em;
+}
+
+.profile-intro-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.pillar-item {
+  background: #ffffff;
+  border: 1px solid #dde5f1;
+  padding: 16px;
+  border-radius: 6px;
+}
+
+.pillar-item strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #17243d;
+  margin-bottom: 6px;
+}
+
+.pillar-item p {
+  font-size: 12px;
+  color: #556379;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 780px) {
+  .profile-intro-pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 营业时间与服务支持 样式 */
+.hours-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.hours-timeline-item {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: #f8faff;
+  border: 1px solid #dbe5f2;
+  border-radius: 6px;
+}
+
+.hours-icon-badge {
+  flex: 0 0 40px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #b9c8ec;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.hours-timeline-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hours-timeline-item span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #4264df;
+  font-family: var(--mono);
+}
+
+.hours-timeline-item strong {
+  font-size: 14px;
+  color: #17243d;
+  line-height: 1.5;
+}
+
+.hours-timeline-item p {
+  font-size: 12px;
+  color: #556379;
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 780px) {
+  .hours-timeline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 线路架构与覆盖 样式 */
+.lines-spec-table {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.line-spec-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 14px 18px;
+  background: #f8faff;
+  border: 1px solid #dbe5f2;
+  border-radius: 6px;
+}
+
+.line-spec-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #244cdb;
+}
+
+.line-spec-value {
+  font-size: 13px;
+  color: #263650;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .line-spec-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+/* 测速数据看板 (晚高峰 & 节假日) 样式 */
+.speed-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.speed-metric-gauges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.speed-gauge-card {
+  background: #ffffff;
+  border: 1px solid #d5dfed;
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(38, 55, 89, 0.04);
+}
+
+.speed-gauge-card span {
+  display: block;
+  font-size: 11px;
+  color: #657188;
+  font-weight: 600;
+}
+
+.speed-gauge-card strong {
+  display: block;
+  font: 800 18px var(--mono);
+  color: #3158d5;
+  margin: 6px 0 2px;
+}
+
+.speed-gauge-card small {
+  display: block;
+  font-size: 11px;
+  color: #526078;
+}
+
+.speed-latency-table {
+  background: #f8faff;
+  border: 1px solid #dbe5f2;
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+
+.speed-latency-table h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #17243d;
+  margin: 0 0 10px;
+}
+
+.latency-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.latency-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #ccd8ea;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font: 700 12px var(--mono);
+  color: #263650;
+}
+
+.latency-pill b {
+  color: #0b7a42;
+}
+
+/* 流媒体与 AI 解锁指示板 */
+.unlock-matrix-card {
+  background: #ffffff;
+  border: 1px solid #d5dfed;
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+
+.unlock-matrix-card h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #17243d;
+  margin: 0 0 12px;
+}
+
+.unlock-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.unlock-tag-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eefaf3;
+  border: 1px solid #b7ecd0;
+  color: #0d6e3c;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.unlock-tag-item i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.speed-review-box {
+  background: #fdfaf4;
+  border: 1px solid #f2e3c6;
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #4a3e2a;
+}
+
+.speed-review-box strong {
+  color: #b45309;
+}
+
+@media (max-width: 850px) {
+  .speed-metric-gauges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 节假日测速专有样式 */
+.holiday-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.holiday-metric-panel {
+  background: #ffffff;
+  border: 1px solid #d5dfed;
+  border-radius: 6px;
+  padding: 18px;
+}
+
+.holiday-metric-panel span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4264df;
+  font-family: var(--mono);
+}
+
+.holiday-metric-panel strong {
+  display: block;
+  font: 800 16px var(--mono);
+  color: #17243d;
+  margin: 6px 0;
+}
+
+.holiday-metric-panel p {
+  font-size: 12px;
+  color: #556379;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 780px) {
+  .holiday-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 套餐明细表格与卡片 */
+.plans-table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.plan-price-card {
+  background: #ffffff;
+  border: 1.5px solid #d5dfed;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all .2s ease;
+}
+
+.plan-price-card:hover {
+  border-color: #3b66f5;
+  box-shadow: 0 8px 24px rgba(59, 102, 245, 0.1);
+  transform: translateY(-2px);
+}
+
+.plan-price-card.featured-plan {
+  border-color: #3b66f5;
+  background: #f7faff;
+  position: relative;
+}
+
+.plan-price-card.featured-plan::after {
+  content: '推荐';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 3px 8px;
+  background: #3b66f5;
+  color: #fff;
+  font: 800 10px var(--mono);
+  border-radius: 3px;
+}
+
+.plan-price-card h3 {
+  font-size: 17px;
+  margin: 0 0 10px;
+  color: #17243d;
+}
+
+.plan-price-card strong {
+  font: 800 24px var(--mono);
+  color: #3158d5;
+}
+
+.plan-price-card small {
+  font-size: 12px;
+  color: #657188;
+  margin-top: 4px;
+  display: block;
+}
+
+.plan-traffic-pill {
+  margin: 12px 0;
+  display: inline-block;
+  padding: 5px 10px;
+  background: #eef2f9;
+  border-radius: 4px;
+  font: 700 12px var(--mono);
+  color: #244cdb;
+}
+
+.plan-price-card p {
+  font-size: 12px;
+  color: #526078;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  margin-top: auto;
+}
+
+/* 底部机场切换与返回推荐导航 */
+.airport-detail-nav-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.nav-bottom-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: #ffffff;
+  border: 1px solid #ccd8ea;
+  border-radius: 4px;
+  color: #263650;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all .2s ease;
+}
+
+.nav-bottom-btn:hover {
+  background: #f0f4fa;
+  border-color: #3b66f5;
+  color: #173dbd;
+}
+
+.nav-bottom-btn.back-list {
+  background: #111c35;
+  color: #ffffff;
+  border-color: #111c35;
+}
+
+.nav-bottom-btn.back-list:hover {
+  background: #254486;
+}

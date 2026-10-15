@@ -424,7 +424,411 @@ const articles = [
   { id: 37, category: '安全', title: '免费机场安全吗？使用前需要知道的风险', summary: '来源不明的配置可能带来隐私、可用性和软件安全问题。' },
   { id: 38, category: '安全', title: '订阅链接泄露怎么办？重置与安全检查步骤', summary: '订阅链接相当于访问凭证，泄露后应及时重置并更新客户端。' },
   { id: 39, category: '安全', title: '机场跑路前可能有哪些信号？', summary: '异常促销、长期套餐、停止维护和售后失联都值得警惕。' },
-  { id: 40, category: '安全', title: '机场年付套餐值得买吗？价格之外的风险评估', summary: '年付月均便宜，但应考虑服务变化、退款规则和资金风险。' }
+  { id: 40, category: '安全', title: '机场年付套餐值得买吗？价格之外的风险评估', summary: '年付月均便宜，但应考虑服务变化、退款规则和资金风险。' },
+
+  // 10 篇全新高权重 SEO & GEO 深度专题文章 (IDs 41-50)
+  {
+    id: 41,
+    category: '线路',
+    title: '原生IP与机房广播IP有什么区别？2026节点伪装度查询与流媒体/TikTok风控全解析',
+    summary: '深度解析原生IP（Native IP）与广播IP（Data Center IP）的技术本质，详解IP纯净度、欺诈分查询方法及如何有效规避流媒体与TikTok锁区风控。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>原生IP是指IP注册所属的国家地区与机房实际接入物理机房所在国家地区完全一致的IP；而广播IP则是通过BGP宣告将其他地区的IP“拉扯”借调到目标机房使用。在流媒体解锁、TikTok带货、海外金融及防风控场景中，原生IP的欺诈分（Fraud Score）更低，几乎不会触发验证码或封禁，是极客与跨境卖家的首选。</p>
+
+<h2>一、原生IP与机房广播IP的技术本质区别</h2>
+<p>在选购跨境代理或机场节点时，服务商经常将“双ISP原生IP”、“纯正美国家宽原生”作为核心卖点。这两者在底层网络协议和路由机制上有何区别？</p>
+<ul>
+  <li><strong>1. 原生IP（Native IP）：</strong>该IP段在国际互联网地址分配机构（如 ARIN、RIPE、APNIC）中的注册所属地，与其实际服务器机房的物理位置保持 100% 一致。例如某个 IP 的注册机构显示为美国加利福尼亚，且物理机房就在洛杉矶数据中心，这种即为纯正原生IP。</li>
+  <li><strong>2. 机房广播IP（BGP Broadcast / Anycast IP）：</strong>服务商持有一批成本低廉的闲置 IP 段（例如注册地在非洲或东欧），通过 BGP 路由协议在香港或美国机房将这些 IP 进行网络广播宣告。虽然用户连接后查到的地理位置可能显示为目标地区，但在各大风控数据库（如 MaxMind、IPinfo）的历史记录中依然被标记为数据中心或异地注册。</li>
+</ul>
+
+<h2>二、为什么流媒体与 TikTok 对广播IP极其敏感？</h2>
+<p>Netflix、Disney+、TikTok 及海外版抖音具有极其严苛的版权保护与防刷风控策略。这些平台每天都会比对全球商业 IP 数据库：</p>
+<ol>
+  <li><strong>IP 属性标签过滤：</strong>风控系统会识别 IP 类型是 <code>ISP（住宅宽带）</code> 还是 <code>Hosting / Data Center（机房托管）</code>。广播IP绝大多数被识别为机房IP，直接被 Netflix 判定为代理拦截。</li>
+  <li><strong>ASN 归属与历史滥用：</strong>广播IP往往被成百上千个廉价机场复用，历史欺诈分极高。一旦某个广播 IP 段出现过批量注册、爬虫抓取等异常行为，整个 C 段都会被 TikTok 算法降权或打入黑名单，导致视频发布零播放（0 View）。</li>
+  <li><strong>原生住宅 IP 的天然优势：</strong>纯正原生住宅IP来源于当地居民家庭宽带（如 Comcast、AT&T、Spectrum），平台风控会视其为正常真实海外居民，从而畅行无阻。</li>
+</ol>
+
+<h2>三、2026节点伪装度与IP纯净度在线查询工具推荐</h2>
+<p>想要验证自己机场节点的真实纯净度，可以通过以下权威工具进行独立排查：</p>
+<ul>
+  <li><strong>Whoer.net：</strong>最直观的伪装度测试网站，重点检查 DNS 泄露、系统时区、语言是否与 IP 物理地区匹配，尽量达到 90% 以上。</li>
+  <li><strong>IPinfo.io：</strong>输入节点出口 IP，重点查看 <code>asn.type</code>。若显示 <code>isp</code> 则为原生/住宅属性，若显示 <code>hosting</code> 则为机房属性。</li>
+  <li><strong>Scamalytics.com：</strong>权威反欺诈风控库，会给出 0-100 的欺诈分数（Fraud Score）。分值低于 15 分表示极其纯净，高于 40 分则极易被各种网站弹验证码或拒绝访问。</li>
+</ul>
+
+<h2>四、挑选原生IP机场的实用建议</h2>
+<p>普通机房节点足以满足日常网页浏览、GitHub代码拉取与油管4K播放需求，无需为全节点盲目追求原生。建议将主力节点按场景细分：</p>
+<ol>
+  <li><strong>常规娱乐：</strong>使用高速专线或BGP中转节点，享受低延迟与大带宽。</li>
+  <li><strong>TikTok运营/AI工具/海外网银：</strong>单独配备支持原生住宅IP或独享IP的专属分流节点，保证IP纯净且不频繁漂移。</li>
+</ol>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>本文由网络架构实验室结合 2026 年最新 MaxMind 与 IP2Location 数据库实测整理。测试节点时请在无缓存的无痕模式下进行，避免历史 Cookie 影响风控判定。</p></div>`
+  },
+  {
+    id: 42,
+    category: '跨境',
+    title: '住宅代理（家宽IP）与专线机场怎么选？跨境电商防关联与海外营销终极指南',
+    summary: '对比住宅家宽代理（Residential Proxy）与机房专线（IPLC/IEPL）在跨境电商多账号防关联、亚马逊/Shopee/Etsy防封及社媒营销中的场景选型。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>专线机场（IPLC/IEPL）的核心优势在于“低延迟、不卡顿、大带宽”，适合日常办公、视频会议与高并发网络冲浪；而住宅代理（家宽IP）的核心优势在于“真实家庭网络环境、极低风控特征、防关联防封禁”，是跨境电商多店铺运营、社媒养号与海外支付的绝对刚需。两者定位不同，应当配合使用而非互相替代。</p>
+
+<h2>一、住宅代理与专线机场的核心差异</h2>
+<p>很多跨境电商新手往往有疑问：我已经购买了高昂的 IPLC 专线机场，为什么登录亚马逊或 Etsy 店铺依然被系统检测关联封店？两者的底层逻辑截然不同：</p>
+<ul>
+  <li><strong>专线机场（IPLC/IEPL）：</strong>解决的是从境内到境外的<strong>传输链路速度与稳定性</strong>问题。它通过物理专线跨越公网，延迟极低且绝不丢包，但出口通常依然是机房公网 IP（Data Center IP），几十甚至上百个用户共享同一个出口 IP。</li>
+  <li><strong>住宅代理（Residential Proxy）：</strong>解决的是<strong>目标网站的风控信任度</strong>问题。住宅代理直接接入海外真实普通家庭宽带路由器，IP 地址由海外电信运营商（如 Verizon、Vodafone、NTT）直接分配给家庭用户，在网站反欺诈系统眼中就是普通海外本地居民。</li>
+</ul>
+
+<h2>二、跨境电商多店铺防关联为什么严禁使用普通机场？</h2>
+<p>在亚马逊（Amazon）、Shopee、Etsy、eBay 及 TikTok Shop 等平台，多店铺防关联是生死红线：</p>
+<ol>
+  <li><strong>出口 IP 动态共享致命隐患：</strong>普通商业机场哪怕是专线，也是多用户共用出口。如果另一个机场用户因违规操作导致该 IP 被亚马逊拉黑，你的店铺在同一 IP 下登录会瞬间被判定为“强关联”，导致连带封店。</li>
+  <li><strong>节点故障漂移带来的异地登录警告：</strong>机场节点因负载均衡或故障转移，出口 IP 随时可能从洛杉矶跳变到圣何塞甚至西雅图。高频跨城市异地登录会立即触发平台的二级身份验证与二次审核。</li>
+  <li><strong>机房 IP 天然风控劣势：</strong>跨境平台对于机房 IP 的容忍度极低，很多机房 IP 连店铺注册第一步的短信验证码都无法接收通过。</li>
+</ol>
+
+<h2>三、住宅代理的两大主流形态：动态与静态独享</h2>
+<p>选购住宅代理时需要根据具体业务场景区分两种产品线：</p>
+<ul>
+  <li><strong>动态住宅代理（按流量计费）：</strong>IP 每次请求或每隔 5-30 分钟轮换一次，全球几千万真实家庭 IP 池。适用于：批量网页爬虫采集、广告验真、海外竞品监控、批量注册前置测试。</li>
+  <li><strong>静态住宅代理（按月独享租用）：</strong>IP 固定不变，独享独占，由海外运营商分配真实家宽段。适用于：亚马逊/Etsy 店铺日常登录打理、海外 PayPal 账号绑定、海外社媒（TikTok/Instagram）长期矩阵养号。</li>
+</ul>
+
+<h2>四、跨境团队的高效网络搭配策略</h2>
+<p>经过大量成熟卖家的实践验证，最优的方案是：<strong>指纹浏览器（AdsPower/比特等） + 静态独享住宅代理绑定店铺环境</strong>；而工作电脑本身的系统网络则挂载<strong>低延迟专线机场</strong>用于日常查资料、看视频、处理海量文件下载，实现性能与安全的分离隔离。</p>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>跨境电商核心资产在于店铺信誉与资金安全，绝不能在 IP 环境上节约成本。无论使用哪种住宅代理，都需配合指纹浏览器进行 WebRTC、Canvas 与时区锁定。</p></div>`
+  },
+  {
+    id: 43,
+    category: '线路',
+    title: '美西（洛杉矶/圣何塞）与美东节点怎么选？中美海缆路由与跨洋延迟抖动全景测评',
+    summary: '全面拆解中美跨洋海底光缆（NCP/FASTER/TPE）走向，深入对比美西洛杉矶、圣何塞与美东纽约节点的延迟、丢包率与AI大模型响应特性。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>美西节点（洛杉矶、圣何塞、西雅图）是中美跨洋海缆的首选登陆点，物理延迟最低（通常为 120ms-160ms），适合绝大部分日常网页、4K流媒体播放与大模型交互；美东节点（纽约、华盛顿、迈阿密）需要横穿美国本土大陆，延迟一般高达 190ms-240ms，适合特定美东金融交易、跨国学术网或针对美东服务器的专属业务。</p>
+
+<h2>一、中美跨洋海缆物理分布与理论延迟极限</h2>
+<p>很多用户好奇：为什么无论机场技术多么先进，连接美国节点的 Ping 延迟永远无法低于 110ms？这受制于物理光速与海缆铺设路径：</p>
+<ul>
+  <li><strong>跨洋海底光缆登陆点：</strong>从中国沿海（青岛、上海、汕头）出发跨越太平洋的直连海缆（如 NCP 新中美海缆、FASTER、TPE 跨太平洋海缆系统），其在美国本土的第一落脚点绝大多数位于美西沿岸（加州洛杉矶、旧金山湾区圣何塞或俄勒冈）。</li>
+  <li><strong>光纤折射率与物理极限：</strong>光在玻璃光纤中的传播速度约为真空中的 2/3（约 20 万公里/秒），从上海到洛杉矶的直线光纤往返时间（RTT）理论极限约为 110ms-120ms。加上陆地中继跳数与路由器处理耗时，美西 130ms-150ms 已经属于顶级专线水准。</li>
+</ul>
+
+<h2>二、美西三大热门节点深度对比</h2>
+<ol>
+  <li><strong>洛杉矶（Los Angeles）：</strong>全美最大的电信互联枢纽（One Wilshire 机房），接入全球运营商最多，带宽容量极大。绝大多数机场的美西节点均设在洛杉矶，性价比极高，适合油管高码率视频与日常浏览。</li>
+  <li><strong>圣何塞/硅谷（San Jose / Silicon Valley）：</strong>紧邻硅谷高科技园区，是 Google、Apple、Meta 等科技巨头数据中心的直连要冲。访问 GitHub、OpenAI 接口时路由跳数更少，抖动通常比洛杉矶更加平稳。</li>
+  <li><strong>西雅图（Seattle）：</strong>靠近美加边境，适合需要兼顾加拿大西部业务以及连接微软（Microsoft Azure）总部的用户。</li>
+</ol>
+
+<h2>三、美东节点为什么延迟高？使用场景有哪些？</h2>
+<p>美东地区（如纽约、北弗吉尼亚 AWS 聚集区）到美西之间还有约 4000 公里的美国陆地光缆跨度，这会额外增加 40ms-70ms 的传输延迟。因此美东节点通常在 200ms 左右：</p>
+<ul>
+  <li><strong>美东金融与华尔街交易：</strong>纽约机房靠近纽交所（NYSE）与纳斯达克交易撮合引擎，美股高频盯盘与金融 API 对美东本地网络有刚性需求。</li>
+  <li><strong>特定学术与政府机构：</strong>华盛顿特区及东海岸名校（哈佛、MIT、哥大）内网资源的访问，选择美东节点能减少内陆跳板中转丢包。</li>
+  <li><strong>避免美西晚高峰公网海缆拥堵：</strong>在重大国际突发事件或海缆故障时，部分优质机场会通过欧洲中转走大西洋海缆反向接入美东，作为备用容灾通道。</li>
+</ul>
+
+<h2>四、日常与 AI 大模型场景的节点调优建议</h2>
+<p>在使用 ChatGPT、Claude 3.5 Sonnet 或 Midjourney 时，API 的单次 HTTP 往返对延迟非常敏感。如果美西延迟为 140ms，美东为 210ms，在连续多轮流式传输（Token Streaming）中，美西节点的打字吐字响应感会明显更平滑。<strong>推荐优先勾选圣何塞或洛杉矶节点，将美东节点作为冷门备用。</strong></p>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>跨洋海缆状态直接影响美西延迟。用户日常可关注全球海缆地图（submarinecablemap）与亚太地区台风地震公告，及时切换备用中转路由。</p></div>`
+  },
+  {
+    id: 44,
+    category: '流媒体',
+    title: 'Apple TV 与电视盒子客厅科学上网实战：软路由、小火箭tvOS与TUN模式全攻略'
+    , summary: '针对 Apple TV 4K、Google TV 及 Android 电视盒子，详解 tvOS 原生小火箭/Sing-box 配置、主旁路由网关分流与电视大屏 4K 零缓冲最佳实践。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>Apple TV 与电视盒子在客厅看 4K Netflix、YouTube 与 Disney+，目前最佳方式分为两类：一是 Apple TV（tvOS 17+）直接安装 App Store 原生代理软件（如 Shadowrocket tvOS、Sing-box、Surge）；二是通过家庭软路由（旁路由 OpenWrt/iStoreOS）开启透明网关接管客厅所有智能设备。根据家庭网络条件选用即可实现大屏 4K 杜比视界零缓冲。</p>
+
+<h2>一、客厅电视大屏翻墙三大主流方案对比</h2>
+<p>相比手机和电脑，电视大屏设备系统相对封闭，遥控器操作繁琐。以下是三种方案的优缺点：</p>
+<ul>
+  <li><strong>方案一：Apple TV 原生客户端（最轻量推荐）：</strong>tvOS 17 开放了系统 VPN 框架，可在美区/港区 App Store 直接下载安装小火箭（Shadowrocket）或 Sing-box。手机扫码即可同步节点，无需购买软路由硬件。</li>
+  <li><strong>方案二：软路由/旁路由网关透明代理（最彻底稳定）：</strong>在软路由（如工控机 N100、R2S/R4S）上运行 Clash Meta 或 PassWall。Apple TV 仅需将网关与 DNS 指向软路由 IP，全屋所有设备（包括 PS5、Switch、智能电视）无感科学上网。</li>
+  <li><strong>方案三：Android 电视盒子安装 apk（平民首选）：</strong>Chromecast with Google TV 或索尼电视直接 sideload 安装 Clash for Android 或 v2rayNG，通过遥控器开启全局或分流。</li>
+</ul>
+
+<h2>二、Apple TV (tvOS 17+) 小火箭原生实战配置</h2>
+<p>如果你手头有 Apple TV 4K，这是体验最顺滑的搭建步骤：</p>
+<ol>
+  <li><strong>登录外区 Apple ID：</strong>在 Apple TV 设置中添加一个美区或港区 Apple 账户并切换为主账号。</li>
+  <li><strong>App Store 下载小火箭：</strong>搜索“Shadowrocket”，如果你在 iPhone/iPad 上曾经购买过同一 Apple ID 的小火箭，tvOS 版无需重复付费，可直接免费下载。</li>
+  <li><strong>手机一键投送配置：</strong>打开 Apple TV 版小火箭，界面会显示一个局域网同步二维码；用同一 Wi-Fi 下的 iPhone 小火箭扫描该码，手机中的所有节点与规则瞬间同步到 Apple TV。</li>
+  <li><strong>保持常驻后台：</strong>在 tvOS 控制中心开启代理连接，小火箭会在后台持续运行，即使休眠唤醒也能秒连。</li>
+</ol>
+
+<h2>三、主旁路由模式在客厅大屏中的优雅设置</h2>
+<p>如果家庭设备众多，旁路由是网络极客的最爱：</p>
+<ul>
+  <li>主路由（如普通硬路由）负责 PPPoE 拨号和 Wi-Fi 覆盖，IP 为 <code>192.168.1.1</code>。</li>
+  <li>旁路由关闭 DHCP 服务，LAN 口 IP 设为 <code>192.168.1.2</code>，网关和 DNS 指向 <code>192.168.1.1</code>。</li>
+  <li>在 Apple TV 的“网络”设置中将 IP 配置改为“手动”：IP 填 <code>192.168.1.50</code>，子网掩码 <code>255.255.255.0</code>，<strong>路由器网关与 DNS 均修改为旁路由 IP <code>192.168.1.2</code></strong>。</li>
+  <li>这样仅有 Apple TV 的流量经过旁路由分流加速，其他家庭成员的手机、电脑依然走主路由直连，互不干扰，即使旁路由重启也不会导致全家断网。</li>
+</ul>
+
+<h2>四、大屏 4K 零卡顿的核心调优技巧</h2>
+<ol>
+  <li><strong>优先选择千兆有线网口连接：</strong>电视盒子看高码率 4K 杜比视界（峰值码率可达 60Mbps-100Mbps），5G Wi-Fi 穿墙后易出现抖动丢包，插上物理网线稳定性提升数倍。</li>
+  <li><strong>分流规则剔除国内应用：</strong>确保爱奇艺、腾讯视频、B站电视端走直连（DIRECT），避免海外回国绕路导致国内流媒体版权无法播放。</li>
+  <li><strong>节点锁定中继/专线节点：</strong>电视播放缓冲容量较大，避免频繁自动切换节点导致鉴权断流重播。</li>
+</ol>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>tvOS 原生代理是客厅大屏网络近年来最大的体验跃升。配置完成后建议使用 Apple TV 内置 Speedtest 跑一次完整测速，确认下行带宽与丢包率达标。</p></div>`
+  },
+  {
+    id: 45,
+    category: '跨境',
+    title: '2026年 Claude 3.5 与 ChatGPT 账号防封指南：节点漂移防范与 WebRTC 泄露拦截',
+    summary: '总结 OpenAI 与 Anthropic 严苛的风控封号逻辑，剖析节点地区漂移、WebRTC 真实 IP 泄露、浏览器时区语言不匹配的排查与防护方案。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>OpenAI 与 Anthropic（Claude）对账号的封控核心在于检测“机器人批量特征、IP纯净度异常与环境不一致”。高危红线包括：高频切换不同国家节点（节点漂移）、WebRTC 泄露境内真实外网 IP、浏览器时区/语言与节点出口地区冲突、以及共用被封号连坐的脏机房 IP。保持固定单一优质节点并做好本地防泄露，是长期稳定不封号的核心法则。</p>
+
+<h2>一、为什么 AI 大模型账号封禁频发？四大致命风控维度</h2>
+<p>很多用户刚充值了 ChatGPT Plus 或 Claude Pro 订阅，次日账号即被停用或封禁（Account Deactivated），其底层原因是触发了自动化反欺诈模型：</p>
+<ul>
+  <li><strong>1. IP 欺诈分与机房黑名单：</strong>Anthropic 使用了全网最严苛的 Cloudflare 企业风控与第三方风控库。数万人共用的大型机场普通节点，其出口 IP 早就被打上了“爬虫、黑产代充、数据中心”标签，一旦关联直接批量注销。</li>
+  <li><strong>2. 节点频繁漂移（IP 跨时区瞬移）：</strong>前 10 分钟在新加坡节点提问，后 10 分钟自动负载均衡切换到英国节点。物理上不可能实现的人类位移行为会被系统立即判定为多地共享账号或异常代理。</li>
+  <li><strong>3. WebRTC 本地内网与公网穿透泄露：</strong>浏览器默认启用的 WebRTC 协议会绕过代理软件，向目标服务器直接汇报你宽带的中国真实 IP，造成“代理表面在海外，底层漏底境内”的致命漏洞。</li>
+  <li><strong>4. 付款卡头（BIN）与账单地址关联：</strong>使用虚拟信用卡代充时，卡段被大面积透支拒付后，该卡头绑定的所有关联账号都会被追溯封禁。</li>
+</ul>
+
+<h2>二、节点防漂移：如何正确设置客户端分流</h2>
+<p>为了让 AI 工具始终保持在同一个地理位置，必须在客户端中锁定专属策略：</p>
+<ol>
+  <li><strong>单独建立 AI 规则分流策略组：</strong>在 Clash 或 Sing-box 中，为 <code>openai.com</code>、<code>oaistatic.com</code>、<code>anthropic.com</code>、<code>claude.ai</code> 独立设立一个节点选择组。</li>
+  <li><strong>关闭 URL-Test（自动测速切节点）：</strong>千万不要将 AI 规则组指向自动选优（URL-Test 或 Fallback），这会导致节点稍有延迟波动就自动切换 IP。必须指定一个固定延迟低、纯净度高的专线节点（如美国固定节点或日本固定节点）。</li>
+  <li><strong>保持长连接与长会话稳定：</strong>大模型流式输出涉及长时间的长轮询或 WebSocket 保持，中途跳 IP 会立即导致“Network Error”或会话阻断。</li>
+</ol>
+
+<h2>三、彻底堵死 WebRTC 与 DNS 泄露实操教程</h2>
+<p>打开专业测试网站 <code>browserleaks.com/webrtc</code>，排查是否存在泄露：</p>
+<ul>
+  <li><strong>Chrome / Edge 浏览器防护：</strong>在扩展商店安装 <code>WebRTC Control</code> 或 <code>WebRTC Protect</code> 插件，将状态设置为“Disable WebRTC”，禁止浏览器向远端发送真实 IP 封包。</li>
+  <li><strong>Firefox 浏览器原生关闭：</strong>在地址栏输入 <code>about:config</code>，搜索 <code>media.peerconnection.enabled</code>，将其值双击修改为 <code>false</code>。</li>
+  <li><strong>时区与语言对齐：</strong>若长期挂载美国节点，建议将浏览器默认语言设置为英语（en-US），或在指纹浏览器中将时区设置为节点对应时区（如 America/Los_Angeles）。</li>
+</ul>
+
+<h2>四、零封号高安全度运行 Checklist</h2>
+<ol>
+  <li>每次打开 AI 工具前，确认客户端代理已开启且连通。</li>
+  <li>不使用来路不明的免费公共节点或万人共享节点。</li>
+  <li>尽量在 PC 端固定浏览器使用，避免在手机端移动数据与 Wi-Fi 频繁切网时连续发送长 prompt。</li>
+  <li>若遇到 Claude 提示“App not available in your region”，切勿频繁刷新，应先清除浏览器 LocalStorage 与 Cookie，更换纯净原生节点后再重新打开。</li>
+</ol>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>AI 大模型风控属于动态规则，Anthropic 尤其对注册时首个 IP 的要求极高。建议新号注册与支付阶段全程使用住宅 IP，日常对话使用固定优质专线节点。</p></div>`
+  },
+  {
+    id: 46,
+    category: '测速',
+    title: 'Ping 延迟很低但网页打不开？TCP握手超时、UDP断流与MTU最佳设置排查指南',
+    summary: '解析网络测试中 ICMP Ping 延迟极低但实际网页卡死、连接超时的根本原因，手把手教你排查 MTU 封包分片、UDP 阻断与 TLS 握手故障。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>Ping 测试仅仅反映了 ICMP 基础报文的往返耗时，属于最简单的单包往返检测；而真实打开网页需要经历 DNS 解析、TCP 三次握手、TLS 加密协商以及海量 HTTP 数据传输。Ping 极快但网页打不开，绝大多数是因为：MTU 设置过大导致封包被路由器分片丢弃、本地运营商阻断了代理端口的 UDP 流量、或者目标域名遭到了中间人 DNS 污染。</p>
+
+<h2>一、为什么 Ping 延迟很低是“假象”？</h2>
+<p>许多用户在客户端中看到节点延迟只有 30ms-50ms，心满意足地打开浏览器，结果转圈半天提示“连接超时”。这种割裂的现象源自网络分层机制：</p>
+<ul>
+  <li><strong>1. ICMP 协议优先级与伪装：</strong>很多机场中转服务器的 Ping 测速实际上测的是“你到中转入口服务器”的延迟，而不是“你到境外真实目标网站”的全程链路耗时。</li>
+  <li><strong>2. 丢包与数据重传未计入：</strong>Ping 发送的是极小的 32 字节或 64 字节心跳包；而一个现代网页包含数十个 JS、CSS、高清图片请求，数据量动辄数兆，只要真实丢包率超过 5%，TCP 拥塞控制就会导致网页彻底卡死。</li>
+</ul>
+
+<h2>二、核心元凶一：MTU（最大传输单元）与封包分片</h2>
+<p>这是代理客户端和软路由最常见却最难排查的隐形杀手：</p>
+<ol>
+  <li><strong>什么是 MTU：</strong>标准以太网的默认 MTU 通常是 1500 字节。当你在代理软件中开启 TUN 虚拟网卡或 WireGuard/Trojan 加密通道时，代理客户端会在原始数据包外层包裹一层额外的加密报头（Overhead，通常占用 40-80 字节）。</li>
+  <li><strong>封包分片丢弃：</strong>如果你的 TUN 虚拟网卡依然设置 MTU 为 1500，加上外层加密报头后总大小超过了物理宽带路由器的上限，沿途路由器就会对封包进行分片（Fragmentation）。很多运营商交换机禁止分片报文通过，导致大包直接被丢弃。</li>
+  <li><strong>症状表现：</strong>能连上聊天软件发文字（文字包极小），但是无法加载图片、打不开视频、网页长时间卡在白屏握手阶段。</li>
+  <li><strong>修复方案：</strong>在 Clash / Sing-box / 软路由的 TUN 配置中，将 MTU 从默认的 <code>1500</code> 手动调整为 <code>1400</code> 或 <code>1280</code>。适当调小 MTU 可以彻底消除封包分片丢弃现象。</li>
+</ol>
+
+<h2>三、核心元凶二：UDP 阻断与 QUIC / HTTP3 冲突</h2>
+<p>现代大厂网站（YouTube、Google、Cloudflare 托管站点）默认优先启用基于 UDP 协议的 HTTP/3 (QUIC)：</p>
+<ul>
+  <li><strong>国内运营商对 UDP 的恶劣 QoS：</strong>许多省份的电信/联通/移动会对国际方向的未知 UDP 数据包实施剧烈的丢包限速惩罚（QoS 丢包率甚至高达 80%）。</li>
+  <li><strong>浏览器死等 UDP 超时：</strong>浏览器向 YouTube 发起 QUIC 连接，UDP 报文被沿途丢弃，浏览器必须等待 3-5 秒超时后才会笨拙地降级回传统 TCP，导致用户体感极度卡顿。</li>
+  <li><strong>解决技巧：</strong>在浏览器中禁用 QUIC 协议。在 Chrome 地址栏输入 <code>chrome://flags</code>，搜索 <code>Experimental QUIC protocol</code> 并设为 <code>Disabled</code>；或在代理分流规则中直接阻断境外 443 端口的 UDP 流量，强制走 TCP 通道。</li>
+</ul>
+
+<h2>四、TLS 握手超时与 DNS 污染排查四步法</h2>
+<ol>
+  <li><strong>检查本地 DNS 设置：</strong>确保代理客户端开启了 <code>Fake-IP</code> 或纯净远程 DoH 解析，杜绝 DNS 脏污染返回虚假 IP。</li>
+  <li><strong>测试单节点真实丢包率：</strong>在客户端内进行长 PING 测试（连续发送 50 个数据包），如果丢包率大于 3%，果断切换到其他备用节点。</li>
+  <li><strong>检查系统时间精度：</strong>TLS 1.3 握手对客户端与服务器的时间同步要求极高，若电脑系统时间偏差超过 60 秒，会导致所有 HTTPS 证书校验失败直接报错。</li>
+  <li><strong>更换加密协议测试：</strong>若 Shadowsocks 协议被运营商深度特征识别干扰，可尝试切换到抗阻断能力更强的 Trojan 或 VLESS-Reality 协议节点。</li>
+</ol>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>网络通信是端到端的复杂系统工程。遇到 Ping 极低但无法上网时，遵循“DNS -> MTU -> UDP -> TLS”的四步排查链，90% 以上的疑难断连问题均可快速迎刃而解。</p></div>`
+  },
+  {
+    id: 47,
+    category: '新手',
+    title: 'Sing-box 极速上手与配置全解：为什么技术极客都在从 Clash 迁移到 Sing-box？',
+    summary: '系统讲解新一代通用代理核心 Sing-box 的核心优势、极低内存占用与强悍路由规则，并为新手提供完整的客户端安装与订阅导入实操指引。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>Sing-box 是由 SagerNet 团队开源的新一代通用代理核心平台，具备原生跨平台支持、极低系统资源与内存占用、底层支持最新主流协议（VLESS-Reality、Hysteria2、TUIC、Shadowsocks）以及极其强大的路由规则引擎。相比逐渐停更的旧版 Clash，Sing-box 代表了代理软件未来的核心发展趋势，新手推荐通过带图形界面的客户端（如 Sing-box 官方 GUI、Karing 或 Clash Verge Rev）极速上手。</p>
+
+<h2>一、Sing-box 究竟是什么？新一代通用代理底座</h2>
+<p>在网络代理领域，早期的主流核心经历了 Shadowsocks -> V2Ray (V2Fly) -> Clash 的演进。随着 Clash 原作者于 2023 年底停止维护，整个技术社区开始全面向 <strong>Sing-box</strong> 迁移生态：</p>
+<ul>
+  <li><strong>纯 Go 语言高性能架构：</strong>Sing-box 摒弃了过往架构的历史包袱，代码精简高效，内存占用仅为老旧客户端的 1/3 到 1/2，在低配软路由或老旧移动设备上运行极为流畅。</li>
+  <li><strong>全协议大一统：</strong>无需安装各种外部二进制插件，Sing-box 原生直接支持包括 Shadowsocks、Trojan、VMess、VLESS（含 Reality 降维打击伪装）、Hysteria 2、TUIC v5、WireGuard 等几乎全套最新协议。</li>
+  <li><strong>原生全平台覆盖：</strong>一套核心直接原生编译运行在 Android、iOS、macOS、Windows、Linux 以及各类嵌入式路由器系统上。</li>
+</ul>
+
+<h2>二、Sing-box 对比传统 Clash 体系的核心优势</h2>
+<ol>
+  <li><strong>规则集（Rule-Set）二进制预编译优化：</strong>传统 Clash 加载数十万行分流规则列表时，内存会骤增数百兆且启动加载卡顿；Sing-box 采用了预编译的 <code>.srs</code> 二进制规则集，匹配速度大幅提升，内存占用几乎感知不到。</li>
+  <li><strong>更稳定健壮的 TUN 虚拟网卡驱动：</strong>Sing-box 内置了轻量高效的虚拟网卡驱动机制，开启全局 TUN 模式接管游戏客户端、远程桌面或命令行流量时极其平稳，几乎不会出现断流断网现象。</li>
+  <li><strong>持续的代码演进与协议首发：</strong>当出现新型抗封锁协议（如 VLESS-Reality、Hysteria 2）时，Sing-box 团队通常第一时间完成合并与规范化，保持技术领先。</li>
+</ol>
+
+<h2>三、新手适用的 Sing-box 客户端推荐与下载</h2>
+<p>对新手而言，无需手动编写复杂的 JSON 配置文件，推荐使用以下成熟的图形化外壳客户端：</p>
+<ul>
+  <li><strong>Windows / macOS 用户：</strong>
+    <ul>
+      <li><code>Sing-box 官方桌面版（GUI）</code>：界面极简现代，支持托盘快捷切换。</li>
+      <li><code>Karing</code>：基于 Sing-box 内核开发的现代跨平台客户端，支持 Windows、macOS、Android、iOS，UI 现代精致，支持多种订阅一键解析。</li>
+      <li><code>Clash Verge Rev</code>：现已集成 Sing-box 内核切换开关，习惯 Clash 界面的老用户可以无缝使用。</li>
+    </ul>
+  </li>
+  <li><strong>iOS / iPadOS 用户：</strong>可以在美区 App Store 搜索 <code>Sing-box</code>（官方免费提供），直接支持 iOS 原生分流与 VPN 服务。</li>
+  <li><strong>Android 用户：</strong>在 Google Play 或 GitHub 官方 Releases 页面下载 <code>S-Box (Sing-box for Android)</code>，纯净无广告。</li>
+</ul>
+
+<h2>四、新手 3 分钟导入订阅与极速配置指南</h2>
+<p>主流商业机场目前均已提供 Sing-box 专用订阅链接，导入步骤如下：</p>
+<ol>
+  <li><strong>获取专用订阅链接：</strong>登录你的机场用户中心后台，在订阅链接复制栏中，选择“复制 Sing-box 订阅”；若机场只提供 Clash 订阅，可使用支持 Sing-box 转换的在线转换工具。</li>
+  <li><strong>客户端粘贴添加：</strong>打开 Sing-box 客户端的“Profiles（配置/订阅）”标签页，点击“New Profile（新增配置）”或“+”，将复制的 URL 粘贴到订阅地址栏，起一个备注名称后点击下载保存。</li>
+  <li><strong>启用配置并启动服务：</strong>在主界面选择下载好的配置，点击“Start（启动）”开启代理服务。</li>
+  <li><strong>按需开启系统代理或 TUN 模式：</strong>如果只需要浏览器科学上网，勾选“System Proxy（系统代理）”即可；如果是玩外服游戏、打大模型命令行或需要接管全系统软件，开启“TUN Mode（TUN 模式）”。</li>
+</ol>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>Sing-box 目前正在成为全网事实上的新一代标准核心。随着各大机场对 Sing-box 订阅支持越来越完善，新手尽早熟悉其使用将大大降低后续迁移维护成本。</p></div>`
+  },
+  {
+    id: 48,
+    category: '安全',
+    title: '机场审计规则深度揭秘：BT下载、金融网银与敏感域名为什么会被主动拦截？',
+    summary: '揭示绝大多数商业机场后台部署的审计过滤规则（Audit Rules），解释为什么封锁 BT/P2P、数字货币、政企网银，以及如何保护个人合规权益。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>商业机场后台部署的“审计规则（Audit Rules）”并非为了窥探个人通信隐私，而是机场为了防范海外版权巨额罚款（DMCA 版权投诉）、规避反洗钱/金融欺诈风控风险、以及保护入口专线服务器不被上游机房直接拔线封机的<strong>生存自保机制</strong>。理解审计规则的范围，能帮助用户更安全合规地使用网络代理服务。</p>
+
+<h2>一、什么是机场审计规则（Audit Rules）？</h2>
+<p>许多用户在使用机场时会遇到这样的情况：访问某些政企网站、国内网银、或者打开 BitTorrent 软件下载影视资源时，连接瞬间被切断，甚至在客户端日志里看到 <code>Match Audit Rule: Blocked</code>。这就是触发了机场部署的自动化审计规则。</p>
+<p>在技术实现上，审计规则通常配置在机场节点服务端（如 Xray、Sing-box 或 SS 后端）的路由拦截表中。当用户的请求域名、目标 IP、或协议特征匹配到预设黑名单库时，服务端会直接拒绝建立转发，并向客户端返回伪造的拒绝响应。</p>
+
+<h2>二、为什么 99% 的机场都严禁 BT / PT 下载？</h2>
+<p><strong>BT/P2P 下载是全网商业机场绝对的第一禁区</strong>，一经发现甚至会直接封禁用户账号，其核心原因是欧美极其严格的知识产权法律：</p>
+<ul>
+  <li><strong>DMCA（数字千年版权法案）版权钓鱼投诉：</strong>好莱坞制片厂、迪士尼、微软件等版权保护联盟会在全网 BT 种子里做“钓鱼节点”，一旦监测到某个机房 IP 在参与侵权电影、音乐或软件的 P2P 做种分发，系统会在数分钟内向机房运营商发送正式的 DMCA 违规通告。</li>
+  <li><strong>机房连带处罚与全段封禁：</strong>如果机场运营者在收到 DMCA 警告后没有在规定时间内停止违规行为，海外机房会直接切断该服务器电源、扣押押金、甚至直接注销整批 IP 段。一人下载 BT 可能会导致整机房数千名用户节点瞬间瘫痪。</li>
+  <li><strong>带宽资源被恶意吞噬：</strong>P2P 协议会疯狂建立成千上万个并发连接，并占满整条中转专线的所有上传和下载带宽，导致其他正常网页浏览用户延迟暴增、体验断崖式恶化。</li>
+</ul>
+
+<h2>三、为什么国内政企、金融网银会被默认拦截？</h2>
+<p>除了 BT 下载，绝大多数机场的默认审计列表还会包含国内政企机关、全国性商业银行（工农中建交）以及特定的支付结算机构：</p>
+<ol>
+  <li><strong>防范黑产利用机场洗钱与撞库：</strong>如果诈骗团队利用机场节点作为跳板去攻击国内金融系统或实施电信诈骗，网安部门会顺藤摸瓜追查到机场入口中转服务器，导致整条专线被公安立案查封。</li>
+  <li><strong>避免用户个人网银触发异地风控：</strong>国内银行 App 具有严格的异地登录与海外 IP 防控策略。如果你挂着美国节点去登录招行或工商银行，极易被银行反洗钱系统判定为“账户疑似被盗”，直接冻结线上转账权限，给用户自己带来巨大麻烦。</li>
+  <li><strong>合规性自我约束：</strong>过滤掉国内敏感站点属于行业通用行规，也是服务商在夹缝中保持长期稳定运营的基本底线。</li>
+</ol>
+
+<h2>四、作为用户，如何正确分流与防范个人风险？</h2>
+<ul>
+  <li><strong>严格开启客户端规则分流（Rule Mode）：</strong>日常必须坚持使用 <code>Rule（规则）</code> 模式，绝不能图省事开 <code>Global（全局）</code> 模式。通过配置完善的规则列表，确保所有国内网站（<code>.cn</code> 域名、国内常用应用）完全直连，不走机场节点中转。</li>
+  <li><strong>BT 与大文件下载自觉关闭代理：</strong>在开启迅雷、BitComet、qBittorrent 下载前，务必先在客户端中断开节点，使用家庭本地宽带直连下载。</li>
+  <li><strong>关注敏感信息传输安全：</strong>虽然机场审计主要在域名和 IP 层面进行正则匹配，无法解密 HTTPS 内部的加密通信内容，但在使用代理时，仍应遵守个人隐私隔离原则，不在代理链路上进行极端敏感操作。</li>
+</ul>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>尊重审计规则既是保护机场服务稳定运行的基石，也是保障自身网络环境安全的明智举措。合法合规、专线专用，才能享受顺畅的全球互联网互联互通。</p></div>`
+  },
+  {
+    id: 49,
+    category: '线路',
+    title: '香港节点速度快但经常失联？CN2 GIA、CMI、BGP 多线中转真实体验与成本差距',
+    summary: '香港虽然物理距离最近、Ping 值最低，但晚高峰丢包与断流频发。全面解密香港电信 CN2 GIA、移动 CMI 与联通 9929 的路由特点与选型策略。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>香港节点地理距离最近，理论延迟仅 10ms-40ms，速度爆发力极强；但由于连接人数集中且公网国际出口带宽极度拥挤，普通廉价香港直连线路在晚高峰极易出现严重丢包（20%-40%）和间歇性断流。只有采用中国电信 CN2 GIA、中国联通 9929、优质移动 CMI 或者境内优质 BGP 专线中转的香港节点，才能兼具极低延迟与全天候稳定性。</p>
+
+<h2>一、香港节点的“物理红利”与“晚高峰魔咒”</h2>
+<p>在所有海外节点中，香港节点永远是国内用户使用率最高的地区：</p>
+<ul>
+  <li><strong>极低物理延迟：</strong>广东沿海地区连接香港物理延迟仅 5ms-15ms，华东（上海/杭州）约 25ms-35ms，华北（北京）约 40ms-50ms。低延迟让网页几乎“秒开”，响应速度无可替代。</li>
+  <li><strong>公网拥堵与断流魔咒：</strong>由于大家都爱选香港节点，每到晚上 20:00-23:00 晚高峰，海量流量涌向普通公网出口（如电信 163 骨干网），导致国际出口队列爆满，产生高丢包、掉线、视频自动降至 480P 的糟糕体验。</li>
+</ul>
+
+<h2>二、三大运营商香港中转路由与成本档次全揭秘</h2>
+<p>同样标注为“香港节点”，背后采用的传输链路成本相差数倍乃至十数倍：</p>
+<ol>
+  <li><strong>中国电信 CN2 GIA（AS4809 - 高端贵族）：</strong>
+    <p>电信专门为高端政企客户打造的下一代承载网，拥有独立出口和专属信道。晚高峰丢包率通常低于 1%，全程走双向 CN2 路由，体验极度顺滑。缺点是机房带宽极其昂贵，通常只有中高端专线机场才会配置。</p>
+  </li>
+  <li><strong>中国移动 CMI（AS58453 - 移动用户的绝配）：</strong>
+    <p>中国移动国际公司直连路由。近年来移动在香港机房投入海量骨干网，移动宽带直连香港 CMI 节点延迟极低且性价比极高；但电信和联通跨网访问 CMI 时，可能会因跨运营商互联结算出现晚高峰丢包。</p>
+  </li>
+  <li><strong>中国联通 9929 / CU Premium（联通 A 网 - 低调精品）：</strong>
+    <p>联通政企高等级专用网络，负载远低于普通联通 169 骨干网，晚高峰表现极其稳定，被称为性价比极高的“联通版 CN2”。</p>
+  </li>
+  <li><strong>普通 163 骨干网（AS4134 - 廉价低质）：</strong>
+    <p>绝大多数 1 元机场和廉价机场使用的直连路线。白天测速可跑满千兆，晚高峰直接丢包到生活不能自理。</p>
+  </li>
+</ol>
+
+<h2>三、直连香港 vs BGP 专线中转香港体验差距</h2>
+<p>衡量一个机场香港节点是否优秀，关键看是否有境内多线入口中转：</p>
+<ul>
+  <li><strong>普通直连线路：</strong>用户本地网络直接通过公网海缆跨越边境到达香港机房。中间只要有一段骨干网波动，就会立即断连。</li>
+  <li><strong>BGP 入口 + 专线中转（IPLC/IEPL）：</strong>用户连接的是机场在境内华南（深圳、广州、东莞）部署的顶级机房 BGP 入口，再通过陆缆专线直通香港出口。这种架构完全绕过了公网国际出口，不受晚高峰公网海啸拥堵影响，延迟稳定在 20ms-30ms 毫无波动。</li>
+</ul>
+
+<h2>四、香港节点避坑与合理搭配建议</h2>
+<ol>
+  <li><strong>晚高峰实测为王：</strong>白天各家香港节点跑分都很好看，务必在晚上 21 点整进行一次持续 5 分钟的长连接稳定性测试，丢包率小于 2% 才合格。</li>
+  <li><strong>多地区备用容灾：</strong>不要将所有客户端规则死绑在香港节点上。当香港大面积维护或光缆检修时，应自动故障转移（Fallback）到日本东京或新加坡节点。</li>
+  <li><strong>移动宽带优先认准 CMI，电信联通优先专线或 CN2：</strong>根据自己家庭宽带的运营商对号入座，能省下不少冤枉钱。</li>
+</ol>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>香港线路是测度机场核心硬实力的试金石。优先选购拥有多入口 BGP 中转或专线链路的机场，才能获得低延迟与高稳定的终极体验。</p></div>`
+  },
+  {
+    id: 50,
+    category: '安全',
+    title: '“不限流量”机场到底是不是智商税？公平使用原则（FUP）、虚标带宽与超卖内幕大起底',
+    summary: '大起底市面上“不限流量”宣传噱头背后的带宽峰值限制、高峰期断网降速、公平使用原则（FUP）及潜在跑路风险，助你理性挑选真正实惠的套餐。',
+    content: `<p class="answer-box"><strong>简明结论：</strong>国际优质跨境网络带宽（如专线、原生机房）是极其昂贵的物理按量或按峰值计费资源，<strong>商业逻辑上根本不存在真正意义上的“高带宽且不限流量”便宜机场</strong>。市面上的不限流量套餐，几乎 100% 存在“严格限速、公平使用原则（FUP）隐性限额、超卖率数百倍、或运营者短期捞金准备跑路”的内幕。重度用户与其追求虚假的不限流量，不如选择真实明码标价的大流量（如 500G-1TB/月）正规套餐。</p>
+
+<h2>一、国际带宽的物理成本逻辑：为什么不限流量是悖论？</h2>
+<p>在 IDC 与国际互联网转接（Transit）市场中，网络带宽有两种结算模式：</p>
+<ul>
+  <li><strong>1. 按 95 峰值计费（95th Percentile）：</strong>每 1Gbps 峰值带宽在优质跨境线路上每月成本高达数千至上万元人民币。</li>
+  <li><strong>2. 按数据流量计费（Per Gigabyte）：</strong>每 TB 跨境专线传输成本通常在几十到上百元不等。</li>
+</ul>
+<p>如果一个机场推出“20 元/月 不限流量”的套餐，只要一个重度用户挂着下载 5TB 蓝光电影，服务商付给上游机房的带宽成本就可能达到数百元，远超用户的购买价格。因此，没有任何可持续经营的商业机场能够真正无条件承受不限流量。</p>
+
+<h2>二、“不限流量”机场背后的四大潜规则与套路</h2>
+<p>服务商为了在低价不限流量下不赔钱，会采用以下隐性手段平衡成本：</p>
+<ol>
+  <li><strong>极其严苛的单机限速：</strong>虽然宣传“不限流量”，但将你的连接速度死死限制在 5Mbps-10Mbps（下载速度仅 1MB/s 左右）。即使 24 小时不停挂机下载，一个月顶多也只能跑几百 G，根本无法享受 4K 秒开。</li>
+  <li><strong>晚高峰极高超卖导致“被动断流”：</strong>把 1000 个人塞进一条只有 100M 带宽的普通线路上。到了晚高峰大家同时连入，整条线路瞬间被挤爆瘫痪，用户连网页都刷不出，自然也就无法消耗流量。</li>
+  <li><strong>公平使用原则（Fair Use Policy, FUP）隐形条款：</strong>很多小机场会在服务条款（TOS）角落里偷偷写上一行字：“当月使用超过 200GB 后将进行限速或人工封停”。宣传写的是“不限流量”，实际执行的依然是限额套餐。</li>
+  <li><strong>短命圈钱与跑路高危：</strong>部分运营者通过“低价不限流量年付促销”在 Telegram 或社交平台大肆收割一波预付款，等用户量剧增服务器不堪重负时，直接注销频道卷款关站。</li>
+</ol>
+
+<h2>三、为什么说按量计费与固定大额套餐更划算？</h2>
+<p>成熟的网络老手极少购买不限流量套餐，原因在于：</p>
+<ul>
+  <li><strong>资源有保障，拒绝劣币驱逐良币：</strong>按量计费的套餐中，每个用户都在为自己的真实用量买单，运营者有充裕的利润向机房采购冗余带宽，保障晚高峰每个人都能跑满千兆速度。</li>
+  <li><strong>节点质量与流媒体解锁更持久：</strong>按量套餐由于没有羊毛党挂机刷流量，出口 IP 不会被高频滥用，流媒体解锁和 AI 工具可用性远比不限流量机场纯净稳定。</li>
+</ul>
+
+<h2>四、重度用量用户（大文件、4K、AI拉取）的正确选购方案</h2>
+<ol>
+  <li><strong>核算真实每月用量：</strong>一个人即使每天看 3 小时 4K 油管视频，每月消耗流量约为 300GB-500GB；常规日常网页浏览和 AI 问答每月仅需 30GB-50GB。根据真实需求购买 500GB 或 1TB 的大额月付套餐足以覆盖。</li>
+  <li><strong>选择按量付费（不限时间）备用包：</strong>部分正规大机场提供“按量计费套餐”（例如 50 元给 500GB，永久有效不限到期时间），非常适合用量波动较大的用户。</li>
+  <li><strong>坚持月付，警惕极端低价年付陷阱：</strong>凡是标榜“50 元终身不限流量”或“超低价不限流量年付”的平台，一律视为高危诈骗或跑路预备役，切勿存侥幸心理。</li>
+</ol>
+
+<div class="article-source"><strong>数据与总结说明</strong><p>网络服务遵循客观的经济学与物理规律。透明的计费、合理的倍率与稳定的服务品质，远胜过华而不实且处处受限的“虚假不限流量”。</p></div>`
+  }
 ];
 
 const categoryAdvice = {
@@ -472,12 +876,14 @@ function articleBody(a) {
 <div class="article-source"><strong>数据说明</strong><p>本文为方法型知识内容，不以服务商宣传代替实测。涉及套餐与价格时应以服务商当前页面为准，线路表现需结合地区、运营商、节点和时段验证。</p></div>`;
 }
 
-const app = document.getElementById('libraryApp'), params = new URLSearchParams(location.search), id = +params.get('id');
+const app = document.getElementById('libraryApp'), params = new URLSearchParams(location.search), id = +(params.get('id') || params.get('post') || params.get('articleId') || 0);
 
 function renderArticle(a) {
   document.title = `${a.title}｜机场精准查`;
-  document.querySelector('meta[name="description"]').content = a.summary;
-  document.querySelector('.library-hero').style.display = 'none';
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.content = a.summary;
+  const hero = document.querySelector('.library-hero');
+  if (hero) hero.style.display = 'none';
   app.innerHTML = `<article class="knowledge-article">
     <a class="back-library" href="library.html">← 返回知识库</a>
     <span class="article-category">${a.category} / ARTICLE ${String(a.id).padStart(2, '0')}</span>
@@ -519,7 +925,7 @@ function renderList(page = 1, query = '', category = '') {
         <h2>热门话题与热搜指南</h2>
         <p>从基础概念到实际使用，按热门问题快速查找权威答案。</p>
       </div>
-      <input id="articleSearch" value="${query}" placeholder="搜索 40 篇知识文章 (包含一元机场、免费机场、小火箭...)" aria-label="搜索知识文章">
+      <input id="articleSearch" value="${query}" placeholder="搜索 50 篇知识文章 (包含原生IP、住宅代理、小火箭、Sing-box...)" aria-label="搜索知识文章">
     </div>
     <div class="category-tabs">
       <button class="${category ? '' : 'active'}" data-cat="">全部</button>
@@ -527,7 +933,7 @@ function renderList(page = 1, query = '', category = '') {
     </div>
     <section class="knowledge-grid">
       ${items.map(a => `<a class="knowledge-card" href="library.html?id=${a.id}">
-        <span>${a.category} · ARTICLE ${String(a.id).padStart(2, '0')}${a.id <= 10 ? ' · 热搜' : ''}</span>
+        <span>${a.category} · ARTICLE ${String(a.id).padStart(2, '0')}${(a.id <= 10 || a.id >= 41) ? ' · 热搜' : ''}</span>
         <h3>${a.title}</h3>
         <p>${a.summary}</p>
         <em>阅读全文 →</em>
@@ -553,6 +959,7 @@ selected ? renderArticle(selected) : renderList(+params.get('page') || 1);
 
 addEventListener('popstate', () => {
   const current = new URLSearchParams(location.search);
-  const article = articles.find(a => a.id === +current.get('id'));
+  const curId = +(current.get('id') || current.get('post') || current.get('articleId') || 0);
+  const article = articles.find(a => a.id === curId);
   article ? renderArticle(article) : renderList(+current.get('page') || 1);
 });
